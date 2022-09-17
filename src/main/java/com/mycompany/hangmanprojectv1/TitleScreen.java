@@ -94,6 +94,7 @@ public class TitleScreen extends javax.swing.JFrame {
         
         final TitleScreen scr = new TitleScreen();
         
+        //This runs the splashscreen for three seconds
         
         
         

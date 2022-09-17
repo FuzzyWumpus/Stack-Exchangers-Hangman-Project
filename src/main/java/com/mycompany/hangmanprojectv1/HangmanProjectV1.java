@@ -12,6 +12,7 @@ package com.mycompany.hangmanprojectv1;
 public class HangmanProjectV1 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        TitleScreen obj = new TitleScreen();
+         obj.setVisible(true);
     }
 }
