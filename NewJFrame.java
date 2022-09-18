@@ -5,12 +5,15 @@
 package hangman;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
+import java.awt.geom.AffineTransform;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Arrays;
 
 /**
  *
@@ -22,6 +25,7 @@ public class NewJFrame extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    int guesses = 6;
     public NewJFrame() {
         
         initComponents();
@@ -29,13 +33,22 @@ public class NewJFrame extends javax.swing.JFrame {
         //showDate();
         clock(); //creates date and time in jpanel
         paint(base);//paints the gallows
+        
+        
+        
         displayWord(t);//displays randomly generated word
+        while(guesses!=6){
+        paintBody(body);
+        }
         
         
         
     }
     String t;
     int length;
+    char characters[];
+    
+    int points =100;
     public void displayWord(String t){
         String[] wordList = new String[]{"abstract", "cemetary", "nurse", "pharmacy", "climbing"}; 
         Random randomNumbers = new Random ();
@@ -44,9 +57,19 @@ public class NewJFrame extends javax.swing.JFrame {
         //System.out.println(wordList[wordNumber]);
         String l = wordList[wordNumber];
         length = l.length();
-        word.setText(wordList[wordNumber]);
+        word.setText(wordList[wordNumber]);//to be commented out later
+        characters = new char[length];
+        for(int i =0; i<characters.length;i++){
+            characters[i] = l.charAt(i);
+            System.out.println(characters[i]);
+        }
     }
-    Graphics base;
+    
+    public void charactersOf(String t){
+        
+        
+    }
+    Graphics base,body;
 
     /**
      *
@@ -87,6 +110,7 @@ public class NewJFrame extends javax.swing.JFrame {
            base.fillRect(450,275,25,05);
        }
        
+           
        
        
        /*post = game.getGraphics();
@@ -96,6 +120,32 @@ public class NewJFrame extends javax.swing.JFrame {
         
        
         }
+   public void paintBody(Graphics body){
+       body = game.getGraphics();
+       game.paintComponents(body);//set graphic Object
+       body.setColor(Color.BLACK);
+       
+       if(guesses ==5){
+           body.drawOval(230,75,50,50);
+           }
+           if(guesses ==4){
+           body.fillRect(250, 125, 05,40);
+           }
+           if(guesses ==3){
+           body.fillRect(225, 125, 30, 05);
+           }
+           if(guesses ==2){
+       body.fillRect(250, 125, 30, 05);
+           }
+           if(guesses ==1){
+       body.fillRect(225, 165, 30, 05);
+           }
+           if(guesses ==0){
+       body.fillRect(250, 165, 30, 05);
+           }
+   
+       
+   }
    
    
    
@@ -146,32 +196,32 @@ public class NewJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         game = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
-        jButton25 = new javax.swing.JButton();
-        jButton26 = new javax.swing.JButton();
+        aButton = new javax.swing.JButton();
+        bButton = new javax.swing.JButton();
+        cButton = new javax.swing.JButton();
+        dButton = new javax.swing.JButton();
+        eButton = new javax.swing.JButton();
+        fButton = new javax.swing.JButton();
+        gButton = new javax.swing.JButton();
+        hButton = new javax.swing.JButton();
+        iButton = new javax.swing.JButton();
+        jButton = new javax.swing.JButton();
+        kButton = new javax.swing.JButton();
+        lButton = new javax.swing.JButton();
+        mButton = new javax.swing.JButton();
+        nButton = new javax.swing.JButton();
+        oButton = new javax.swing.JButton();
+        pButton = new javax.swing.JButton();
+        qButton = new javax.swing.JButton();
+        rButton = new javax.swing.JButton();
+        sButton = new javax.swing.JButton();
+        tButton = new javax.swing.JButton();
+        uButton = new javax.swing.JButton();
+        vButton = new javax.swing.JButton();
+        wButton = new javax.swing.JButton();
+        xButton = new javax.swing.JButton();
+        yButton = new javax.swing.JButton();
+        zButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         clock = new javax.swing.JLabel();
         word = new javax.swing.JLabel();
@@ -181,92 +231,187 @@ public class NewJFrame extends javax.swing.JFrame {
 
         game.setBackground(new java.awt.Color(204, 204, 204));
 
-        jButton1.setText("A");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        aButton.setText("A");
+        aButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                aButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("B");
-
-        jButton3.setText("C");
-
-        jButton4.setText("D");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        bButton.setText("B");
+        bButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                bButtonActionPerformed(evt);
             }
         });
 
-        jButton5.setText("E");
-
-        jButton6.setText("F");
-
-        jButton7.setText("G");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        cButton.setText("C");
+        cButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                cButtonActionPerformed(evt);
             }
         });
 
-        jButton8.setText("H");
-
-        jButton9.setText("I");
-
-        jButton10.setText("J");
-
-        jButton11.setText("K");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        dButton.setText("D");
+        dButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                dButtonActionPerformed(evt);
             }
         });
 
-        jButton12.setText("L");
-
-        jButton13.setText("M");
-
-        jButton14.setText("N");
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
+        eButton.setText("E");
+        eButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+                eButtonActionPerformed(evt);
             }
         });
 
-        jButton15.setText("O");
-
-        jButton16.setText("P");
-
-        jButton17.setText("Q");
-
-        jButton18.setText("R");
-
-        jButton19.setText("S");
-
-        jButton20.setText("T");
-
-        jButton21.setText("U");
-        jButton21.addActionListener(new java.awt.event.ActionListener() {
+        fButton.setText("F");
+        fButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton21ActionPerformed(evt);
+                fButtonActionPerformed(evt);
             }
         });
 
-        jButton22.setText("V");
-        jButton22.addActionListener(new java.awt.event.ActionListener() {
+        gButton.setText("G");
+        gButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton22ActionPerformed(evt);
+                gButtonActionPerformed(evt);
             }
         });
 
-        jButton23.setText("W");
+        hButton.setText("H");
+        hButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hButtonActionPerformed(evt);
+            }
+        });
 
-        jButton24.setText("X");
+        iButton.setText("I");
+        iButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iButtonActionPerformed(evt);
+            }
+        });
 
-        jButton25.setText("Y");
+        jButton.setText("J");
+        jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonActionPerformed(evt);
+            }
+        });
 
-        jButton26.setText("Z");
+        kButton.setText("K");
+        kButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButtonActionPerformed(evt);
+            }
+        });
+
+        lButton.setText("L");
+        lButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lButtonActionPerformed(evt);
+            }
+        });
+
+        mButton.setText("M");
+        mButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mButtonActionPerformed(evt);
+            }
+        });
+
+        nButton.setText("N");
+        nButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nButtonActionPerformed(evt);
+            }
+        });
+
+        oButton.setText("O");
+        oButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                oButtonActionPerformed(evt);
+            }
+        });
+
+        pButton.setText("P");
+        pButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pButtonActionPerformed(evt);
+            }
+        });
+
+        qButton.setText("Q");
+        qButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                qButtonActionPerformed(evt);
+            }
+        });
+
+        rButton.setText("R");
+        rButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rButtonActionPerformed(evt);
+            }
+        });
+
+        sButton.setText("S");
+        sButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sButtonActionPerformed(evt);
+            }
+        });
+
+        tButton.setText("T");
+        tButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tButtonActionPerformed(evt);
+            }
+        });
+
+        uButton.setText("U");
+        uButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uButtonActionPerformed(evt);
+            }
+        });
+
+        vButton.setText("V");
+        vButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vButtonActionPerformed(evt);
+            }
+        });
+
+        wButton.setText("W");
+        wButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                wButtonActionPerformed(evt);
+            }
+        });
+
+        xButton.setText("X");
+        xButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                xButtonActionPerformed(evt);
+            }
+        });
+
+        yButton.setText("Y");
+        yButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yButtonActionPerformed(evt);
+            }
+        });
+
+        zButton.setText("Z");
+        zButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                zButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         jLabel1.setText("Hangman");
@@ -284,48 +429,48 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addGroup(gameLayout.createSequentialGroup()
                         .addGap(190, 190, 190)
                         .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                            .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(dButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                            .addComponent(qButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                            .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(eButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                            .addComponent(rButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                            .addComponent(jButton19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(fButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                            .addComponent(sButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                            .addComponent(jButton20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(gButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                            .addComponent(tButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                            .addComponent(jButton21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(hButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                            .addComponent(uButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                            .addComponent(jButton22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(iButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                            .addComponent(vButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gameLayout.createSequentialGroup()
-                                .addComponent(jButton23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(wButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(xButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gameLayout.createSequentialGroup()
-                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(kButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(gameLayout.createSequentialGroup()
                         .addGap(103, 103, 103)
                         .addComponent(word)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(jButton25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lButton, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(yButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(jButton26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(mButton, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(zButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(36, Short.MAX_VALUE))
             .addGroup(gameLayout.createSequentialGroup()
                 .addContainerGap()
@@ -336,18 +481,17 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addGroup(gameLayout.createSequentialGroup()
                         .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(gameLayout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(aButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(bButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(gameLayout.createSequentialGroup()
-                                .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(nButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(oButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton16, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                            .addComponent(pButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                            .addComponent(cButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(clock)
                 .addGap(113, 113, 113))
@@ -363,34 +507,34 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addComponent(word)
                 .addGap(32, 32, 32)
                 .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7)
-                    .addComponent(jButton8)
-                    .addComponent(jButton9)
-                    .addComponent(jButton10)
-                    .addComponent(jButton11)
-                    .addComponent(jButton12)
-                    .addComponent(jButton13))
+                    .addComponent(aButton)
+                    .addComponent(bButton)
+                    .addComponent(cButton)
+                    .addComponent(dButton)
+                    .addComponent(eButton)
+                    .addComponent(fButton)
+                    .addComponent(gButton)
+                    .addComponent(hButton)
+                    .addComponent(iButton)
+                    .addComponent(jButton)
+                    .addComponent(kButton)
+                    .addComponent(lButton)
+                    .addComponent(mButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton14)
-                    .addComponent(jButton15)
-                    .addComponent(jButton16)
-                    .addComponent(jButton17)
-                    .addComponent(jButton18)
-                    .addComponent(jButton19)
-                    .addComponent(jButton20)
-                    .addComponent(jButton21)
-                    .addComponent(jButton22)
-                    .addComponent(jButton23)
-                    .addComponent(jButton24)
-                    .addComponent(jButton25)
-                    .addComponent(jButton26))
+                    .addComponent(nButton)
+                    .addComponent(oButton)
+                    .addComponent(pButton)
+                    .addComponent(qButton)
+                    .addComponent(rButton)
+                    .addComponent(sButton)
+                    .addComponent(tButton)
+                    .addComponent(uButton)
+                    .addComponent(vButton)
+                    .addComponent(wButton)
+                    .addComponent(xButton)
+                    .addComponent(yButton)
+                    .addComponent(zButton))
                 .addGap(34, 34, 34))
         );
 
@@ -409,33 +553,528 @@ public class NewJFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void gButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+        boolean contains = false;
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+for (char c : characters) {
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton14ActionPerformed
+    if (c == 'g') {
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_gButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void dButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        boolean contains = false;
 
-    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton22ActionPerformed
+for (char c : characters) {
 
-    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+    if (c == 'd') {
+
+        contains = true;
+        dButton.setEnabled(false);
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_dButtonActionPerformed
+
+    private void nButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton21ActionPerformed
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'n') {
+
+        contains = true;
+        dButton.setEnabled(false);
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_nButtonActionPerformed
+
+    private void kButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'k') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_kButtonActionPerformed
+
+    private void aButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aButtonActionPerformed
+        // TODO add your handling code here:
+    boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'a') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_aButtonActionPerformed
+
+    private void vButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'v') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_vButtonActionPerformed
+
+    private void uButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'u') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_uButtonActionPerformed
+
+    private void bButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'b') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_bButtonActionPerformed
+
+    private void cButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'c') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_cButtonActionPerformed
+
+    private void eButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'e') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_eButtonActionPerformed
+
+    private void fButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'f') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_fButtonActionPerformed
+
+    private void hButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'h') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_hButtonActionPerformed
+
+    private void iButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'i') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_iButtonActionPerformed
+
+    private void jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'j') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_jButtonActionPerformed
+
+    private void lButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'l') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_lButtonActionPerformed
+
+    private void mButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'm') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_mButtonActionPerformed
+
+    private void oButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'o') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_oButtonActionPerformed
+
+    private void pButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'p') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_pButtonActionPerformed
+
+    private void qButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'q') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_qButtonActionPerformed
+
+    private void rButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'r') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_rButtonActionPerformed
+
+    private void sButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 's') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_sButtonActionPerformed
+
+    private void tButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 't') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_tButtonActionPerformed
+
+    private void wButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'w') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_wButtonActionPerformed
+
+    private void xButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'x') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    // do something
+    paintBody(body);
+}
+    }//GEN-LAST:event_xButtonActionPerformed
+
+    private void yButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'y') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_yButtonActionPerformed
+
+    private void zButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zButtonActionPerformed
+        // TODO add your handling code here:
+        boolean contains = false;
+
+for (char c : characters) {
+
+    if (c == 'z') {
+
+        contains = true;
+        break;
+    }
+}
+if (!contains) {
+    guesses--;
+    points = points -10;
+    
+    paintBody(body);
+    // do something
+}
+    }//GEN-LAST:event_zButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -477,35 +1116,35 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton aButton;
+    private javax.swing.JButton bButton;
+    private javax.swing.JButton cButton;
     private javax.swing.JLabel clock;
+    private javax.swing.JButton dButton;
+    private javax.swing.JButton eButton;
+    private javax.swing.JButton fButton;
+    private javax.swing.JButton gButton;
     private javax.swing.JPanel game;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
-    private javax.swing.JButton jButton26;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton hButton;
+    private javax.swing.JButton iButton;
+    private javax.swing.JButton jButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton kButton;
+    private javax.swing.JButton lButton;
+    private javax.swing.JButton mButton;
+    private javax.swing.JButton nButton;
+    private javax.swing.JButton oButton;
+    private javax.swing.JButton pButton;
+    private javax.swing.JButton qButton;
+    private javax.swing.JButton rButton;
+    private javax.swing.JButton sButton;
+    private javax.swing.JButton tButton;
+    private javax.swing.JButton uButton;
+    private javax.swing.JButton vButton;
+    private javax.swing.JButton wButton;
     private javax.swing.JLabel word;
+    private javax.swing.JButton xButton;
+    private javax.swing.JButton yButton;
+    private javax.swing.JButton zButton;
     // End of variables declaration//GEN-END:variables
 }
