@@ -97,7 +97,7 @@ public class Mainscreen extends javax.swing.JFrame {
 
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
         this.dispose();
-        Game obj = new Game();
+        NewJFrame obj = new NewJFrame();
         obj.setVisible(true);
         
     }//GEN-LAST:event_StartActionPerformed
