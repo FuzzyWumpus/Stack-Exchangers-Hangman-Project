@@ -4,18 +4,36 @@
  */
 package com.mycompany.hangmanprojectv1;
 
-/**
- *
- * @author Nathan Elias
- */
+/***************************************************************  
+*  file: Endgame.java  
+*  authors:Ethan Murguia, Tony Diaz, Anthony Roman, Nathan Elias, Sebastian Cursaro
+*  class: CS 2450 – Programming Graphical User Interface 
+*  
+*  assignment: Swing Project Version 1.0  
+*  date last modified: 9/21/2022  
+*  
+*  purpose: This JFrame displays the high scores screen, the users score, and an option to go back 
+*  to the main screen.
+****************************************************************/
+
+//Method: end button
+//Purpose: takes the user back to the main screen upon clicking allowing them to play again
+
 public class Endgame extends javax.swing.JFrame {
 
+    static int score;
+ 
     /**
      * Creates new form Endgame
      */
     public Endgame() {
+        
+           
         initComponents();
+        
+        yourScore.setText("Score: " + score);
          setLocationRelativeTo(null);
+         
     }
 
     /**
@@ -29,11 +47,17 @@ public class Endgame extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         End = new javax.swing.JButton();
+        firstScore = new javax.swing.JLabel();
+        firstScore1 = new javax.swing.JLabel();
+        firstScore2 = new javax.swing.JLabel();
+        firstScore3 = new javax.swing.JLabel();
+        firstScore4 = new javax.swing.JLabel();
+        yourScore = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setText("GAMEOVER");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setText("Highscores");
 
         End.setText("End");
         End.addActionListener(new java.awt.event.ActionListener() {
@@ -42,26 +66,70 @@ public class Endgame extends javax.swing.JFrame {
             }
         });
 
+        firstScore.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        firstScore.setText("ABC...00000");
+
+        firstScore1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        firstScore1.setText("ABC...00000");
+
+        firstScore2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        firstScore2.setText("ABC...00000");
+
+        firstScore3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        firstScore3.setText("ABC...00000");
+
+        firstScore4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        firstScore4.setText("ABC...00000");
+
+        yourScore.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        yourScore.setText("Score: ");
+        yourScore.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(234, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(301, 301, 301))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(End)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(End)
+                        .addGap(155, 155, 155)
+                        .addComponent(yourScore, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(36, 201, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(firstScore4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(firstScore, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(firstScore2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(firstScore1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(firstScore3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(184, 184, 184))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(188, 188, 188)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 282, Short.MAX_VALUE)
-                .addComponent(End)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(firstScore4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(firstScore, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(firstScore1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(firstScore2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(firstScore3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(End, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(yourScore, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
@@ -78,6 +146,9 @@ public class Endgame extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+   
+  
+   
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -111,6 +182,12 @@ public class Endgame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton End;
+    private javax.swing.JLabel firstScore;
+    private javax.swing.JLabel firstScore1;
+    private javax.swing.JLabel firstScore2;
+    private javax.swing.JLabel firstScore3;
+    private javax.swing.JLabel firstScore4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel yourScore;
     // End of variables declaration//GEN-END:variables
 }

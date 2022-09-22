@@ -4,10 +4,22 @@
  */
 package com.mycompany.hangmanprojectv1;
 
-/**
- *
- * @author Nathan Elias
- */
+/***************************************************************  
+*  file: Scores.java  
+*  authors:Ethan Murguia, Tony Diaz, Anthony Roman, Nathan Elias, Sebastian Cursaro
+*  class: CS 2450 – Programming Graphical User Interface 
+*  
+*  assignment: Swing Project Version 1.0  
+*  date last modified: 9/21/2022  
+*  
+*  purpose: This JFrame displays the high scores screen, that also shows the user’s
+*  after playing, with a button to return back to the main menu 
+****************************************************************/
+
+//Method: back button
+//Purpose: takes the user back to the main screen upon clicking  
+
+
 public class Scores extends javax.swing.JFrame {
 
     /**
@@ -54,18 +66,23 @@ public class Scores extends javax.swing.JFrame {
         jLabel1.setText("Highscores");
 
         firstScore.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        firstScore.setForeground(new java.awt.Color(255, 0, 51));
         firstScore.setText("ABC...00000");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 0, 51));
         jLabel2.setText("ABC...00000");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
         jLabel3.setText("ABC...00000");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 0, 51));
         jLabel4.setText("ABC...00000");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 0, 0));
         jLabel5.setText("ABC...00000");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

@@ -4,10 +4,22 @@
  */
 package com.mycompany.hangmanprojectv1;
 
-/**
- *
- * @author Nathan Elias
- */
+/***************************************************************  
+*  file: MainScreen.java  
+*  authors:Ethan Murguia, Tony Diaz, Anthony Roman, Nathan Elias, Sebastian Cursaro
+*  class: CS 2450 – Programming Graphical User Interface 
+*  
+*  assignment: Swing Project Version 1.0  
+*  date last modified: 9/21/2022  
+*  
+*  purpose: This class displays the Main screen, with three buttons that takes the user
+*  to the the game Jframe, the highscores Jframe or the Credits JFrame
+* 
+****************************************************************/  
+//Method: buttons
+//purpose: these three buttons will take the user to either the game screen
+// the high scores screen or the credits screen respectively.
+
 public class Mainscreen extends javax.swing.JFrame {
 
     /**
@@ -97,7 +109,7 @@ public class Mainscreen extends javax.swing.JFrame {
 
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
         this.dispose();
-        NewJFrame obj = new NewJFrame();
+        Hangman obj = new Hangman();
         obj.setVisible(true);
         
     }//GEN-LAST:event_StartActionPerformed

@@ -10,11 +10,26 @@ package com.mycompany.hangmanprojectv1;
  */
 public class CreditScreen extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CreditScreen
-     */
+/***************************************************************  
+*  file: CreditScreen.java  
+*  authors:Ethan Murguia, Tony Diaz, Anthony Roman, Nathan Elias, Sebastian Cursaro
+*  class: CS 2450 – Programming Graphical User Interface 
+*  
+*  assignment: Swing Project Version 1.0  
+*  date last modified: 9/21/2022  
+*  
+*  purpose: This Jframe displays a the credits, with the name of each member and
+*  and an option to go back to the main menu. 
+* 
+****************************************************************/  
+
+
+
+
     public CreditScreen() {
         initComponents();
+        //setSize(600,400);
+        //jPanel1.setSize(600,400);
         setLocationRelativeTo(null);
     }
 
@@ -127,7 +142,8 @@ public class CreditScreen extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Method jButton1ActionedPerformed 
+//Purpose: Button takes the user back to the main menu screen 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
         Mainscreen obj = new Mainscreen();

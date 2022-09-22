@@ -4,10 +4,19 @@
  */
 package com.mycompany.hangmanprojectv1;
 
-/**
- *
- * @author Nathan Elias
- */
+/***************************************************************  
+*  file: TitleScreen.java  
+*  authors:Ethan Murguia, Tony Diaz, Anthony Roman, Nathan Elias, Sebastian Cursaro
+*  class: CS 2450 – Programming Graphical User Interface 
+*  
+*  assignment: Swing Project Version 1.0  
+*  date last modified: 9/21/2022  
+*  
+*  purpose: This Jframe displays a title screen, showing the project name
+*  and the team name before swapping to the main screen after 3 seconds.
+* 
+****************************************************************/  
+
 public class TitleScreen extends javax.swing.JFrame {
 
     /**
