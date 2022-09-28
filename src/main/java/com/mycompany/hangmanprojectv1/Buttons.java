@@ -7,6 +7,11 @@ import java.util.Random;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 
 /**
@@ -25,7 +30,9 @@ public class Buttons extends javax.swing.JFrame {
     Color  blue   = new Color(0, 0, 255);
     Color purple = new Color(200, 0, 255);
     Color yellow = new Color(255, 255, 0);
-    Color chosenColor; 
+    
+    int chosenColor; 
+    Color[] colorArray = new Color[5];
     
     JButton[] buttonArray = new JButton[16];
     
@@ -37,8 +44,11 @@ public class Buttons extends javax.swing.JFrame {
     
     String chosenWord;//selected color
     
+    int score;
+    
     public Buttons() {
         initComponents();
+        clock();
         jButton0.setVisible(false);
         jButton1.setVisible(false);
         jButton2.setVisible(false);
@@ -75,11 +85,11 @@ public class Buttons extends javax.swing.JFrame {
         
         locationArray = buttonDecision();
         
-        location1= locationArray[0];
-        location2 = locationArray[1];
-        location3 = locationArray[2];
-        location4 = locationArray[3];
-        location5 = locationArray[4];
+        location1= locationArray[0];//blue
+        location2 = locationArray[1];//red
+        location3 = locationArray[2];//yellow
+        location4 = locationArray[3];//green
+        location5 = locationArray[4];//purple
         
         buttonArray[location1].setVisible(true);
         buttonArray[location2].setVisible(true);
@@ -90,9 +100,21 @@ public class Buttons extends javax.swing.JFrame {
         chosenWord = randomWord();
         jLabel2.setText(chosenWord);
         
+        
+        colorArray[0]= blue;
+        colorArray[1]= red;
+        colorArray[2]=yellow;
+        colorArray[3]=green;
+        colorArray[4]=purple; 
+        
         chosenColor=randomColor();
-        jLabel2.setForeground(chosenColor);
-        jLabel2.setFont(new Font("Serif",Font.BOLD,20));
+       
+        
+        jLabel2.setForeground(colorArray[chosenColor]);
+        jLabel2.setFont(new Font("Serif",Font.BOLD,25));
+        
+        
+        
         
         
     }
@@ -107,7 +129,7 @@ public class Buttons extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        clock = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton0 = new javax.swing.JButton();
@@ -132,7 +154,7 @@ public class Buttons extends javax.swing.JFrame {
 
         jPanel1.setPreferredSize(new java.awt.Dimension(600, 400));
 
-        jLabel1.setText("TIME");
+        clock.setText("TIME");
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("COLOR");
@@ -141,6 +163,9 @@ public class Buttons extends javax.swing.JFrame {
 
         jButton0.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton0.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton0MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton0MouseEntered(evt);
             }
@@ -149,47 +174,231 @@ public class Buttons extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton0);
+
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton1MousePressed(evt);
+            }
+        });
         jPanel2.add(jButton1);
+
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton2MouseExited(evt);
+            }
+        });
         jPanel2.add(jButton2);
+
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton3MouseExited(evt);
+            }
+        });
         jPanel2.add(jButton3);
+
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton4MouseExited(evt);
+            }
+        });
         jPanel2.add(jButton4);
+
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton5MouseExited(evt);
+            }
+        });
         jPanel2.add(jButton5);
+
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton6MouseExited(evt);
+            }
+        });
         jPanel2.add(jButton6);
+
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton7MouseExited(evt);
+            }
+        });
         jPanel2.add(jButton7);
+
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton8MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton8MouseExited(evt);
+            }
+        });
         jPanel2.add(jButton8);
+
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton9MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton9MouseExited(evt);
+            }
+        });
         jPanel2.add(jButton9);
+
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton10MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton10MouseExited(evt);
+            }
+        });
         jPanel2.add(jButton10);
+
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton11MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton11MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton11MouseExited(evt);
+            }
+        });
         jPanel2.add(jButton11);
+
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton12MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton12MouseExited(evt);
+            }
+        });
         jPanel2.add(jButton12);
+
+        jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton13MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton13MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton13MouseExited(evt);
+            }
+        });
         jPanel2.add(jButton13);
+
+        jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton14MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton14MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton14MouseExited(evt);
+            }
+        });
         jPanel2.add(jButton14);
+
+        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton15MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton15MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton15MouseExited(evt);
+            }
+        });
         jPanel2.add(jButton15);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(235, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(clock, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(237, 237, 237)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(154, 154, 154)
-                .addComponent(jLabel1)
-                .addGap(59, 59, 59))
+                .addGap(0, 240, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 373, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(clock, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 334, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 73, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(0, 107, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
+
+        clock.getAccessibleContext().setAccessibleName("clock");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,7 +418,39 @@ public class Buttons extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-      private int[] buttonDecision()
+    @SuppressWarnings("ResultOfObjectAllocationIgnored")
+        void clock(){
+        
+        Thread watch = new Thread()
+        {
+            public void run()
+                {
+                try {
+                    for(;;){
+                    Calendar cal = new GregorianCalendar();
+                    int day=cal.get(Calendar.DAY_OF_MONTH);
+                    int month = cal.get(Calendar.MONTH);
+                    int year = cal.get(Calendar.YEAR);
+        
+                    int second=cal.get(Calendar.SECOND);
+                    int minute =cal.get(Calendar.MINUTE);
+                    int hour = cal.get(Calendar.HOUR);
+                    clock.setText("Date: " + month + "/" + day + "/"+year+" Time "+hour+":"+minute+";"+second+" ");
+                    
+                    sleep(1000);
+                    }
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                }
+            
+            
+        };
+        watch.start();
+            
+        
+    }
+    private int[] buttonDecision()
       {
           int[] locations = new int[5];
           int l1;
@@ -267,35 +508,564 @@ public class Buttons extends javax.swing.JFrame {
         return words[choose];
       }
       
-      public Color randomColor()
+      public int randomColor()
       {
           Random rand = new Random();
-          Color[] color = new Color[5];
-          color[0] = new Color(255,0,0);//red
-          color[1]  = new Color(0, 255,  0);//green
-          color[2]  = new Color(0, 0, 255);//blue
-          color[3] = new Color(200, 0, 255);//purple
-          color[4] = new Color(255, 255, 0);//yelow
           
           int choose = rand.nextInt(5);
-          return color[choose];
+          return choose;
          
           
       }
       
+     
+         
+      
+    private void jButton0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton0MouseClicked
+        // TODO add your handling code here:
+      if(buttonArray[0]==buttonArray[location1] && chosenColor==0){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[0]==buttonArray[location2] && chosenColor==1){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[0]==buttonArray[location3] && chosenColor==2){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[0]==buttonArray[location4] && chosenColor==3){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[0]==buttonArray[location5] && chosenColor==4){
+        score = score +100;
+        System.out.println(score);
+       }
+     
+        
+    }//GEN-LAST:event_jButton0MouseClicked
+
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+        // TODO add your handling code here:
+         if(buttonArray[1]==buttonArray[location1] && chosenColor==0){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[1]==buttonArray[location2] && chosenColor==1){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[1]==buttonArray[location3] && chosenColor==2){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[1]==buttonArray[location4] && chosenColor==3){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[1]==buttonArray[location5] && chosenColor==4){
+        score = score +100;
+        System.out.println(score);
+       }
+    }//GEN-LAST:event_jButton1MousePressed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+         if(buttonArray[2]==buttonArray[location1] && chosenColor==0){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[2]==buttonArray[location2] && chosenColor==1){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[2]==buttonArray[location3] && chosenColor==2){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[2]==buttonArray[location4] && chosenColor==3){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[2]==buttonArray[location5] && chosenColor==4){
+        score = score +100;
+        System.out.println(score);
+       }
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+         if(buttonArray[3]==buttonArray[location1] && chosenColor==0){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[3]==buttonArray[location2] && chosenColor==1){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[3]==buttonArray[location3] && chosenColor==2){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[3]==buttonArray[location4] && chosenColor==3){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[3]==buttonArray[location5] && chosenColor==4){
+        score = score +100;
+        System.out.println(score);
+       }
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        if(buttonArray[4]==buttonArray[location1] && chosenColor==0){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[4]==buttonArray[location2] && chosenColor==1){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[4]==buttonArray[location3] && chosenColor==2){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[4]==buttonArray[location4] && chosenColor==3){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[4]==buttonArray[location5] && chosenColor==4){
+        score = score +100;
+        System.out.println(score);
+       }
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        if(buttonArray[5]==buttonArray[location1] && chosenColor==0){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[5]==buttonArray[location2] && chosenColor==1){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[5]==buttonArray[location3] && chosenColor==2){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[5]==buttonArray[location4] && chosenColor==3){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[5]==buttonArray[location5] && chosenColor==4){
+        score = score +100;
+        System.out.println(score);
+       }
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        if(buttonArray[6]==buttonArray[location1] && chosenColor==0){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[6]==buttonArray[location2] && chosenColor==1){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[6]==buttonArray[location3] && chosenColor==2){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[6]==buttonArray[location4] && chosenColor==3){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[6]==buttonArray[location5] && chosenColor==4){
+        score = score +100;
+        System.out.println(score);
+       }
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+        if(buttonArray[7]==buttonArray[location1] && chosenColor==0){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[7]==buttonArray[location2] && chosenColor==1){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[7]==buttonArray[location3] && chosenColor==2){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[7]==buttonArray[location4] && chosenColor==3){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[7]==buttonArray[location5] && chosenColor==4){
+        score = score +100;
+        System.out.println(score);
+       }
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        // TODO add your handling code here:
+      if(buttonArray[8]==buttonArray[location1] && chosenColor==0){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[8]==buttonArray[location2] && chosenColor==1){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[8]==buttonArray[location3] && chosenColor==2){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[8]==buttonArray[location4] && chosenColor==3){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[8]==buttonArray[location5] && chosenColor==4){
+        score = score +100;
+        System.out.println(score);
+       }
+    }//GEN-LAST:event_jButton8MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        // TODO add your handling code here:
+       if(buttonArray[9]==buttonArray[location1] && chosenColor==0){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[9]==buttonArray[location2] && chosenColor==1){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[9]==buttonArray[location3] && chosenColor==2){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[9]==buttonArray[location4] && chosenColor==3){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[9]==buttonArray[location5] && chosenColor==4){
+        score = score +100;
+        System.out.println(score);
+       }
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        // TODO add your handling code here:
+         if(buttonArray[10]==buttonArray[location1] && chosenColor==0){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[10]==buttonArray[location2] && chosenColor==1){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[10]==buttonArray[location3] && chosenColor==2){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[10]==buttonArray[location4] && chosenColor==3){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[10]==buttonArray[location5] && chosenColor==4){
+        score = score +100;
+        System.out.println(score);
+       }
+    }//GEN-LAST:event_jButton10MouseClicked
+
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+        // TODO add your handling code here:
+       if(buttonArray[11]==buttonArray[location1] && chosenColor==0){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[11]==buttonArray[location2] && chosenColor==1){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[11]==buttonArray[location3] && chosenColor==2){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[11]==buttonArray[location4] && chosenColor==3){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[11]==buttonArray[location5] && chosenColor==4){
+        score = score +100;
+        System.out.println(score);
+       }
+    }//GEN-LAST:event_jButton11MouseClicked
+
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        // TODO add your handling code here:
+         if(buttonArray[12]==buttonArray[location1] && chosenColor==0){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[12]==buttonArray[location2] && chosenColor==1){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[12]==buttonArray[location3] && chosenColor==2){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[12]==buttonArray[location4] && chosenColor==3){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[12]==buttonArray[location5] && chosenColor==4){
+        score = score +100;
+        System.out.println(score);
+       }
+    }//GEN-LAST:event_jButton12MouseClicked
+
+    private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
+        // TODO add your handling code here:
+        if(buttonArray[13]==buttonArray[location1] && chosenColor==0){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[13]==buttonArray[location2] && chosenColor==1){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[13]==buttonArray[location3] && chosenColor==2){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[13]==buttonArray[location4] && chosenColor==3){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[13]==buttonArray[location5] && chosenColor==4){
+        score = score +100;
+        System.out.println(score);
+       }
+    }//GEN-LAST:event_jButton13MouseClicked
+
+    private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
+        // TODO add your handling code here:
+       if(buttonArray[14]==buttonArray[location1] && chosenColor==0){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[14]==buttonArray[location2] && chosenColor==1){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[14]==buttonArray[location3] && chosenColor==2){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[14]==buttonArray[location4] && chosenColor==3){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[14]==buttonArray[location5] && chosenColor==4){
+        score = score +100;
+        System.out.println(score);
+       }
+    }//GEN-LAST:event_jButton14MouseClicked
+
+    private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
+        // TODO add your handling code here:
+        if(buttonArray[15]==buttonArray[location1] && chosenColor==0){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[15]==buttonArray[location2] && chosenColor==1){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[15]==buttonArray[location3] && chosenColor==2){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[15]==buttonArray[location4] && chosenColor==3){
+        score = score +100;
+        System.out.println(score);
+       }
+       if(buttonArray[15]==buttonArray[location5] && chosenColor==4){
+        score = score +100;
+        System.out.println(score);
+       }
+    }//GEN-LAST:event_jButton15MouseClicked
+
     private void jButton0MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton0MouseEntered
         // TODO add your handling code here:
-        
-          jButton0.setBorder(BorderFactory.createLineBorder(Color.black,3));
-        
+        jButton0.setBorder(BorderFactory.createLineBorder(Color.black,4));
     }//GEN-LAST:event_jButton0MouseEntered
 
     private void jButton0MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton0MouseExited
         // TODO add your handling code here:
-       
-         jButton0.setBorderPainted(false);
-        
+        jButton0.setBorderPainted(false);
     }//GEN-LAST:event_jButton0MouseExited
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        // TODO add your handling code here:
+        jButton1.setBorder(BorderFactory.createLineBorder(Color.black,4));
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        // TODO add your handling code here:
+        jButton1.setBorderPainted(false);
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
+        // TODO add your handling code here:
+        jButton2.setBorder(BorderFactory.createLineBorder(Color.black,4));
+    }//GEN-LAST:event_jButton2MouseEntered
+
+    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
+        // TODO add your handling code here:
+        jButton2.setBorderPainted(false);
+    }//GEN-LAST:event_jButton2MouseExited
+
+    private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
+        // TODO add your handling code here:
+        jButton3.setBorder(BorderFactory.createLineBorder(Color.black,4));
+    }//GEN-LAST:event_jButton3MouseEntered
+
+    private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
+        // TODO add your handling code here:
+        jButton3.setBorderPainted(false);
+    }//GEN-LAST:event_jButton3MouseExited
+
+    private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
+        // TODO add your handling code here:
+        jButton4.setBorder(BorderFactory.createLineBorder(Color.black,4));
+    }//GEN-LAST:event_jButton4MouseEntered
+
+    private void jButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseExited
+        // TODO add your handling code here:
+        jButton4.setBorderPainted(false);
+    }//GEN-LAST:event_jButton4MouseExited
+
+    private void jButton5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseEntered
+        // TODO add your handling code here:
+        jButton5.setBorder(BorderFactory.createLineBorder(Color.black,4));
+    }//GEN-LAST:event_jButton5MouseEntered
+
+    private void jButton5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseExited
+        // TODO add your handling code here:
+        jButton5.setBorderPainted(false);
+    }//GEN-LAST:event_jButton5MouseExited
+
+    private void jButton6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseEntered
+        // TODO add your handling code here:
+        jButton6.setBorder(BorderFactory.createLineBorder(Color.black,4));
+    }//GEN-LAST:event_jButton6MouseEntered
+
+    private void jButton6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseExited
+        // TODO add your handling code here:
+        jButton6.setBorderPainted(false);
+    }//GEN-LAST:event_jButton6MouseExited
+
+    private void jButton7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseEntered
+        // TODO add your handling code here:
+        jButton7.setBorder(BorderFactory.createLineBorder(Color.black,4));
+    }//GEN-LAST:event_jButton7MouseEntered
+
+    private void jButton7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseExited
+        // TODO add your handling code here:
+        jButton7.setBorderPainted(false);
+    }//GEN-LAST:event_jButton7MouseExited
+
+    private void jButton8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseEntered
+        // TODO add your handling code here:
+        jButton8.setBorder(BorderFactory.createLineBorder(Color.black,4));
+    }//GEN-LAST:event_jButton8MouseEntered
+
+    private void jButton8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseExited
+        // TODO add your handling code here:
+        jButton8.setBorderPainted(false);
+    }//GEN-LAST:event_jButton8MouseExited
+
+    private void jButton9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseEntered
+        // TODO add your handling code here:
+        jButton9.setBorder(BorderFactory.createLineBorder(Color.black,4));
+    }//GEN-LAST:event_jButton9MouseEntered
+
+    private void jButton9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseExited
+        // TODO add your handling code here:
+        jButton9.setBorderPainted(false);
+    }//GEN-LAST:event_jButton9MouseExited
+
+    private void jButton10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseEntered
+        // TODO add your handling code here:
+        jButton10.setBorder(BorderFactory.createLineBorder(Color.black,4));
+    }//GEN-LAST:event_jButton10MouseEntered
+
+    private void jButton10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseExited
+        // TODO add your handling code here:
+        jButton10.setBorderPainted(false);
+    }//GEN-LAST:event_jButton10MouseExited
+
+    private void jButton11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseEntered
+        // TODO add your handling code here:
+        jButton11.setBorder(BorderFactory.createLineBorder(Color.black,4));
+    }//GEN-LAST:event_jButton11MouseEntered
+
+    private void jButton11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseExited
+        // TODO add your handling code here:
+        jButton11.setBorderPainted(false);
+    }//GEN-LAST:event_jButton11MouseExited
+
+    private void jButton12MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseEntered
+        // TODO add your handling code here:
+        jButton12.setBorder(BorderFactory.createLineBorder(Color.black,4));
+    }//GEN-LAST:event_jButton12MouseEntered
+
+    private void jButton12MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseExited
+        // TODO add your handling code here:
+        jButton12.setBorderPainted(false);
+    }//GEN-LAST:event_jButton12MouseExited
+
+    private void jButton13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseEntered
+        // TODO add your handling code here:
+        jButton13.setBorder(BorderFactory.createLineBorder(Color.black,4));
+    }//GEN-LAST:event_jButton13MouseEntered
+
+    private void jButton13MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseExited
+        // TODO add your handling code here:
+        jButton13.setBorderPainted(false);
+    }//GEN-LAST:event_jButton13MouseExited
+
+    private void jButton14MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseEntered
+        // TODO add your handling code here:
+        jButton14.setBorder(BorderFactory.createLineBorder(Color.black,4));
+    }//GEN-LAST:event_jButton14MouseEntered
+
+    private void jButton14MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseExited
+        // TODO add your handling code here:
+        jButton14.setBorderPainted(false);
+    }//GEN-LAST:event_jButton14MouseExited
+
+    private void jButton15MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseEntered
+        // TODO add your handling code here:
+        jButton15.setBorder(BorderFactory.createLineBorder(Color.black,4));
+    }//GEN-LAST:event_jButton15MouseEntered
+
+    private void jButton15MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseExited
+        // TODO add your handling code here:
+        jButton15.setBorderPainted(false);
+    }//GEN-LAST:event_jButton15MouseExited
     
     /**
      * @param args the command line arguments
@@ -335,6 +1105,7 @@ public class Buttons extends javax.swing.JFrame {
     }
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel clock;
     private javax.swing.JButton jButton0;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -351,7 +1122,6 @@ public class Buttons extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
