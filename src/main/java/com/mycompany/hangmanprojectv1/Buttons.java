@@ -25,7 +25,7 @@ public class Buttons extends javax.swing.JFrame {
     Color  blue   = new Color(0, 0, 255);
     Color purple = new Color(200, 0, 255);
     Color yellow = new Color(255, 255, 0);
-    Color chosenColor;
+    Color chosenColor; 
     
     JButton[] buttonArray = new JButton[16];
     
@@ -183,8 +183,8 @@ public class Buttons extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 372, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 373, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addGap(0, 73, Short.MAX_VALUE)
