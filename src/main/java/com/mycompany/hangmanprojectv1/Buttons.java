@@ -24,6 +24,7 @@ public class Buttons extends javax.swing.JFrame {
      * Creates new form Buttons
      */
     int[] locationArray;
+    static int buttonClicked;
     
     Color red = new Color(255,0,0);
     Color  green   = new Color(0, 255,  0);
@@ -42,6 +43,7 @@ public class Buttons extends javax.swing.JFrame {
     int location4;//green
     int location5;//purple
     
+    
     String chosenWord;//selected color
     
     int score;
@@ -49,69 +51,7 @@ public class Buttons extends javax.swing.JFrame {
     public Buttons() {
         initComponents();
         clock();
-        jButton0.setVisible(false);
-        jButton1.setVisible(false);
-        jButton2.setVisible(false);
-        jButton3.setVisible(false);
-        jButton4.setVisible(false);
-        jButton5.setVisible(false);
-        jButton6.setVisible(false);
-        jButton7.setVisible(false);
-        jButton8.setVisible(false);
-        jButton9.setVisible(false);
-        jButton10.setVisible(false);
-        jButton11.setVisible(false);
-        jButton12.setVisible(false);
-        jButton13.setVisible(false);
-        jButton14.setVisible(false);
-        jButton15.setVisible(false);
-        
-        buttonArray[0]= jButton0;
-        buttonArray[1]= jButton1;
-        buttonArray[2]= jButton2;
-        buttonArray[3]= jButton3;
-        buttonArray[4]= jButton4;
-        buttonArray[5]= jButton5;
-        buttonArray[6]= jButton6;
-        buttonArray[7]= jButton7;
-        buttonArray[8]= jButton8;
-        buttonArray[9]= jButton9;
-        buttonArray[10]= jButton10;
-        buttonArray[11]= jButton11;
-        buttonArray[12]= jButton12;
-        buttonArray[13]= jButton13;
-        buttonArray[14]= jButton14;
-        buttonArray[15]= jButton15;
-        
-        locationArray = buttonDecision();
-        
-        location1= locationArray[0];//blue
-        location2 = locationArray[1];//red
-        location3 = locationArray[2];//yellow
-        location4 = locationArray[3];//green
-        location5 = locationArray[4];//purple
-        
-        buttonArray[location1].setVisible(true);
-        buttonArray[location2].setVisible(true);
-        buttonArray[location3].setVisible(true);
-        buttonArray[location4].setVisible(true);
-        buttonArray[location5].setVisible(true);
-        
-        chosenWord = randomWord();
-        jLabel2.setText(chosenWord);
-        
-        
-        colorArray[0]= blue;
-        colorArray[1]= red;
-        colorArray[2]=yellow;
-        colorArray[3]=green;
-        colorArray[4]=purple; 
-        
-        chosenColor=randomColor();
-       
-        
-        jLabel2.setForeground(colorArray[chosenColor]);
-        jLabel2.setFont(new Font("Serif",Font.BOLD,25));
+        runGame();
         
         
         
@@ -416,7 +356,8 @@ public class Buttons extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pack();
+        setSize(new java.awt.Dimension(611, 438));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     @SuppressWarnings("ResultOfObjectAllocationIgnored")
         void clock(){
@@ -461,6 +402,7 @@ public class Buttons extends javax.swing.JFrame {
           Random rand = new Random();
           l1 = rand.nextInt(16); 
           buttonArray[l1].setBackground(blue);
+          
           
           l2 = rand.nextInt(16);
           if(l2==l1)
@@ -518,30 +460,129 @@ public class Buttons extends javax.swing.JFrame {
           
       }
       
+      public void runGame()
+      {
+          jButton0.setVisible(false);
+        jButton1.setVisible(false);
+        jButton2.setVisible(false);
+        jButton3.setVisible(false);
+        jButton4.setVisible(false);
+        jButton5.setVisible(false);
+        jButton6.setVisible(false);
+        jButton7.setVisible(false);
+        jButton8.setVisible(false);
+        jButton9.setVisible(false);
+        jButton10.setVisible(false);
+        jButton11.setVisible(false);
+        jButton12.setVisible(false);
+        jButton13.setVisible(false);
+        jButton14.setVisible(false);
+        jButton15.setVisible(false);
+        
+        buttonArray[0]= jButton0;
+        buttonArray[1]= jButton1;
+        buttonArray[2]= jButton2;
+        buttonArray[3]= jButton3;
+        buttonArray[4]= jButton4;
+        buttonArray[5]= jButton5;
+        buttonArray[6]= jButton6;
+        buttonArray[7]= jButton7;
+        buttonArray[8]= jButton8;
+        buttonArray[9]= jButton9;
+        buttonArray[10]= jButton10;
+        buttonArray[11]= jButton11;
+        buttonArray[12]= jButton12;
+        buttonArray[13]= jButton13;
+        buttonArray[14]= jButton14;
+        buttonArray[15]= jButton15;
+        
+        locationArray = buttonDecision();
+        
+        location1= locationArray[0];//blue
+        location2 = locationArray[1];//red
+        location3 = locationArray[2];//yellow
+        location4 = locationArray[3];//green
+        location5 = locationArray[4];//purple
+        
+        buttonArray[location1].setVisible(true);
+        buttonArray[location2].setVisible(true);
+        buttonArray[location3].setVisible(true);
+        buttonArray[location4].setVisible(true);
+        buttonArray[location5].setVisible(true);
+        
+        chosenWord = randomWord();
+        jLabel2.setText(chosenWord);
+        
+        
+        colorArray[0]= blue;
+        colorArray[1]= red;
+        colorArray[2]=yellow;
+        colorArray[3]=green;
+        colorArray[4]=purple; 
+        
+        chosenColor=randomColor();
+       
+        
+        jLabel2.setForeground(colorArray[chosenColor]);
+        jLabel2.setFont(new Font("Serif",Font.BOLD,25));
+      }
+      
+  
+      
      
          
       
     private void jButton0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton0MouseClicked
         // TODO add your handling code here:
-      if(buttonArray[0]==buttonArray[location1] && chosenColor==0){
+     
+        
+        if(buttonArray[0]==buttonArray[location1] && chosenColor==0){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[0]==buttonArray[location2] && chosenColor==1){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
+       
        }
        if(buttonArray[0]==buttonArray[location3] && chosenColor==2){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
+       
        }
        if(buttonArray[0]==buttonArray[location4] && chosenColor==3){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
+        
        }
        if(buttonArray[0]==buttonArray[location5] && chosenColor==4){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
      
         
@@ -549,361 +590,757 @@ public class Buttons extends javax.swing.JFrame {
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
         // TODO add your handling code here:
-         if(buttonArray[1]==buttonArray[location1] && chosenColor==0){
+        
+       
+        if(buttonArray[1]==buttonArray[location1] && chosenColor==0){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
+         
        }
        if(buttonArray[1]==buttonArray[location2] && chosenColor==1){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
+         
        }
        if(buttonArray[1]==buttonArray[location3] && chosenColor==2){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
+        
        }
        if(buttonArray[1]==buttonArray[location4] && chosenColor==3){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[1]==buttonArray[location5] && chosenColor==4){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
     }//GEN-LAST:event_jButton1MousePressed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-         if(buttonArray[2]==buttonArray[location1] && chosenColor==0){
+
+        if(buttonArray[2]==buttonArray[location1] && chosenColor==0){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[2]==buttonArray[location2] && chosenColor==1){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[2]==buttonArray[location3] && chosenColor==2){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[2]==buttonArray[location4] && chosenColor==3){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[2]==buttonArray[location5] && chosenColor==4){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-         if(buttonArray[3]==buttonArray[location1] && chosenColor==0){
+        
+        if(buttonArray[3]==buttonArray[location1] && chosenColor==0){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[3]==buttonArray[location2] && chosenColor==1){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[3]==buttonArray[location3] && chosenColor==2){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[3]==buttonArray[location4] && chosenColor==3){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[3]==buttonArray[location5] && chosenColor==4){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
+
         if(buttonArray[4]==buttonArray[location1] && chosenColor==0){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[4]==buttonArray[location2] && chosenColor==1){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[4]==buttonArray[location3] && chosenColor==2){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[4]==buttonArray[location4] && chosenColor==3){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[4]==buttonArray[location5] && chosenColor==4){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         // TODO add your handling code here:
-        if(buttonArray[5]==buttonArray[location1] && chosenColor==0){
+       if(buttonArray[5]==buttonArray[location1] && chosenColor==0){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[5]==buttonArray[location2] && chosenColor==1){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[5]==buttonArray[location3] && chosenColor==2){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[5]==buttonArray[location4] && chosenColor==3){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[5]==buttonArray[location5] && chosenColor==4){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         // TODO add your handling code here:
+       
         if(buttonArray[6]==buttonArray[location1] && chosenColor==0){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[6]==buttonArray[location2] && chosenColor==1){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[6]==buttonArray[location3] && chosenColor==2){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[6]==buttonArray[location4] && chosenColor==3){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[6]==buttonArray[location5] && chosenColor==4){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
     }//GEN-LAST:event_jButton6MouseClicked
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
         // TODO add your handling code here:
+       
         if(buttonArray[7]==buttonArray[location1] && chosenColor==0){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[7]==buttonArray[location2] && chosenColor==1){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[7]==buttonArray[location3] && chosenColor==2){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[7]==buttonArray[location4] && chosenColor==3){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[7]==buttonArray[location5] && chosenColor==4){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
     }//GEN-LAST:event_jButton7MouseClicked
 
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
         // TODO add your handling code here:
-      if(buttonArray[8]==buttonArray[location1] && chosenColor==0){
+      
+        if(buttonArray[8]==buttonArray[location1] && chosenColor==0){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[8]==buttonArray[location2] && chosenColor==1){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[8]==buttonArray[location3] && chosenColor==2){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[8]==buttonArray[location4] && chosenColor==3){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[8]==buttonArray[location5] && chosenColor==4){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
     }//GEN-LAST:event_jButton8MouseClicked
 
     private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
         // TODO add your handling code here:
-       if(buttonArray[9]==buttonArray[location1] && chosenColor==0){
+       
+        if(buttonArray[9]==buttonArray[location1] && chosenColor==0){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[9]==buttonArray[location2] && chosenColor==1){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[9]==buttonArray[location3] && chosenColor==2){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[9]==buttonArray[location4] && chosenColor==3){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[9]==buttonArray[location5] && chosenColor==4){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
     }//GEN-LAST:event_jButton9MouseClicked
 
     private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
         // TODO add your handling code here:
-         if(buttonArray[10]==buttonArray[location1] && chosenColor==0){
+       
+        if(buttonArray[10]==buttonArray[location1] && chosenColor==0){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[10]==buttonArray[location2] && chosenColor==1){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[10]==buttonArray[location3] && chosenColor==2){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[10]==buttonArray[location4] && chosenColor==3){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[10]==buttonArray[location5] && chosenColor==4){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
     }//GEN-LAST:event_jButton10MouseClicked
 
     private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
         // TODO add your handling code here:
-       if(buttonArray[11]==buttonArray[location1] && chosenColor==0){
+       
+        if(buttonArray[11]==buttonArray[location1] && chosenColor==0){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[11]==buttonArray[location2] && chosenColor==1){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[11]==buttonArray[location3] && chosenColor==2){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[11]==buttonArray[location4] && chosenColor==3){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[11]==buttonArray[location5] && chosenColor==4){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
     }//GEN-LAST:event_jButton11MouseClicked
 
     private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
         // TODO add your handling code here:
-         if(buttonArray[12]==buttonArray[location1] && chosenColor==0){
+      
+        if(buttonArray[12]==buttonArray[location1] && chosenColor==0){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[12]==buttonArray[location2] && chosenColor==1){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
+       
        if(buttonArray[12]==buttonArray[location3] && chosenColor==2){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
+       
        if(buttonArray[12]==buttonArray[location4] && chosenColor==3){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[12]==buttonArray[location5] && chosenColor==4){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
     }//GEN-LAST:event_jButton12MouseClicked
 
     private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
         // TODO add your handling code here:
+       
         if(buttonArray[13]==buttonArray[location1] && chosenColor==0){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[13]==buttonArray[location2] && chosenColor==1){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[13]==buttonArray[location3] && chosenColor==2){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[13]==buttonArray[location4] && chosenColor==3){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[13]==buttonArray[location5] && chosenColor==4){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
     }//GEN-LAST:event_jButton13MouseClicked
 
     private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
         // TODO add your handling code here:
-       if(buttonArray[14]==buttonArray[location1] && chosenColor==0){
+       
+        if(buttonArray[14]==buttonArray[location1] && chosenColor==0){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[14]==buttonArray[location2] && chosenColor==1){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[14]==buttonArray[location3] && chosenColor==2){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[14]==buttonArray[location4] && chosenColor==3){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
+       
        if(buttonArray[14]==buttonArray[location5] && chosenColor==4){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
     }//GEN-LAST:event_jButton14MouseClicked
 
     private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
         // TODO add your handling code here:
+       
         if(buttonArray[15]==buttonArray[location1] && chosenColor==0){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[15]==buttonArray[location2] && chosenColor==1){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[15]==buttonArray[location3] && chosenColor==2){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[15]==buttonArray[location4] && chosenColor==3){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
        if(buttonArray[15]==buttonArray[location5] && chosenColor==4){
         score = score +100;
         System.out.println(score);
+        if(buttonClicked < 4)
+        {
+            runGame();
+            buttonClicked++;
+        }
        }
     }//GEN-LAST:event_jButton15MouseClicked
 
