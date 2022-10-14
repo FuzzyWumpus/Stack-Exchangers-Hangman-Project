@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.geom.AffineTransform;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Random;
@@ -65,7 +66,7 @@ public class Hangman extends javax.swing.JFrame {
      * Creates new form Hangman
      */
     int guesses = 6;
-    public Hangman() {
+    public Hangman() throws IOException {
         
         initComponents();
         //NewJFrame12.setPreferredSize(new Dimension(400,300));
@@ -122,10 +123,10 @@ public class Hangman extends javax.swing.JFrame {
         }
     }
     
-    public void endGame() {
+    public void endGame() throws IOException {
         Endgame.score = points;
         this.dispose();
-        Endgame obj = new Endgame();
+        Buttons obj = new Buttons();
         obj.setVisible(true);
         
     }
@@ -185,7 +186,7 @@ public class Hangman extends javax.swing.JFrame {
         
        
         }
-   public void paintBody(Graphics body){
+   public void paintBody(Graphics body) throws IOException{
       
        body = game.getGraphics();
        game.paintComponents(body);//set graphic Object
@@ -221,7 +222,7 @@ public class Hangman extends javax.swing.JFrame {
        body.fillRect(250, 165, 30, 05);
        Endgame.score = 40; 
        this.dispose();
-        Endgame obj = new Endgame();
+        Buttons obj = new Buttons();
         obj.setVisible(true);
              
            }
@@ -697,10 +698,18 @@ for (char c : characters) {
        }
         wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+              try {
+                  endGame();
+              } catch (IOException ex) {
+                  Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+              }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+              try {
+                  endGame();
+              } catch (IOException ex) {
+                  Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+              }
         }
         else {
             
@@ -713,7 +722,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     gButton.setEnabled(false);
 
     // do something
@@ -738,10 +751,18 @@ for (char c : characters) {
         dButton.setEnabled(false);
               wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+           try {
+               endGame();
+           } catch (IOException ex) {
+               Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+           }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+           try {
+               endGame();
+           } catch (IOException ex) {
+               Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+           }
         }
         else {
             
@@ -752,7 +773,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     dButton.setEnabled(false);
     // do something
 }
@@ -777,10 +802,18 @@ for (char c : characters) {
                 wordGuessed++;
                 
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -792,7 +825,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     nButton.setEnabled(false);
     // do something
 }
@@ -816,10 +853,18 @@ for (char c : characters) {
        kButton.setEnabled(false);
                 wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+              try {
+                  endGame();
+              } catch (IOException ex) {
+                  Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+              }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+              try {
+                  endGame();
+              } catch (IOException ex) {
+                  Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+              }
         }
         else {
             
@@ -830,7 +875,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     kButton.setEnabled(false);
     // do something
 }
@@ -855,10 +904,18 @@ for (char c : characters) {
         aButton.setEnabled(false);
              
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+           try {
+               endGame();
+           } catch (IOException ex) {
+               Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+           }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+           try {
+               endGame();
+           } catch (IOException ex) {
+               Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+           }
         }
         else {
             
@@ -869,7 +926,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+        try {
+            paintBody(body);
+        } catch (IOException ex) {
+            Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+        }
     aButton.setEnabled(false);
     // do something
 }
@@ -893,10 +954,18 @@ for (char c : characters) {
         vButton.setEnabled(false);
                 wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -907,7 +976,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     vButton.setEnabled(false);
     // do something
 }
@@ -931,10 +1004,18 @@ for (char c : characters) {
         uButton.setEnabled(false);
                 wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -945,7 +1026,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     uButton.setEnabled(false);
     // do something
 }
@@ -969,10 +1054,18 @@ for (char c : characters) {
         bButton.setEnabled(false);
                 wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -983,7 +1076,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     bButton.setEnabled(false);
     // do something
 }
@@ -1007,10 +1104,18 @@ for (char c : characters) {
         cButton.setEnabled(false);
                 wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -1021,7 +1126,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     cButton.setEnabled(false);
     // do something
 }
@@ -1046,10 +1155,18 @@ for (char c : characters) {
         eButton.setEnabled(false);
            
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+            try {
+                endGame();
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+            try {
+                endGame();
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else {
             
@@ -1060,7 +1177,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     eButton.setEnabled(false);
     // do something
 }
@@ -1084,10 +1205,18 @@ for (char c : characters) {
         fButton.setEnabled(false);
                 wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -1098,7 +1227,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     fButton.setEnabled(false);
     // do something
 }
@@ -1122,10 +1255,18 @@ for (char c : characters) {
         hButton.setEnabled(false);
                 wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -1136,7 +1277,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     hButton.setEnabled(false);
     // do something
 }
@@ -1161,10 +1306,18 @@ for (char c : characters) {
         iButton.setEnabled(false);
                 
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -1175,7 +1328,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     iButton.setEnabled(false);
     // do something
 }
@@ -1199,10 +1356,18 @@ for (char c : characters) {
         jButton.setEnabled(false);
                 wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -1213,7 +1378,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     jButton.setEnabled(false);
     // do something
 }
@@ -1237,10 +1406,18 @@ for (char c : characters) {
         lButton.setEnabled(false);
                 wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -1251,7 +1428,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     lButton.setEnabled(false);
     // do something
 }
@@ -1275,10 +1456,18 @@ for (char c : characters) {
         mButton.setEnabled(false);
                 wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -1289,7 +1478,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     mButton.setEnabled(false);
     // do something
 }
@@ -1313,10 +1506,18 @@ for (char c : characters) {
         oButton.setEnabled(false);
                 wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -1327,7 +1528,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     oButton.setEnabled(false);
     // do something
 }
@@ -1351,10 +1556,18 @@ for (char c : characters) {
         pButton.setEnabled(false);
                 wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -1365,7 +1578,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
      pButton.setEnabled(false);
     // do something
 }
@@ -1389,10 +1606,18 @@ for (char c : characters) {
         qButton.setEnabled(false);
                 wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -1403,7 +1628,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     qButton.setEnabled(false);
     // do something
 }
@@ -1427,10 +1656,18 @@ for (char c : characters) {
         rButton.setEnabled(false);
                 wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -1441,7 +1678,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     rButton.setEnabled(false);
     // do something
 }
@@ -1465,10 +1706,18 @@ for (char c : characters) {
         sButton.setEnabled(false);
                 wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -1479,7 +1728,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     sButton.setEnabled(false);
     // do something
 }
@@ -1504,10 +1757,18 @@ for (char c : characters) {
         tButton.setEnabled(false);
                 
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -1518,7 +1779,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     tButton.setEnabled(false);
     // do something
 }
@@ -1542,10 +1807,18 @@ for (char c : characters) {
         wButton.setEnabled(false);
                 wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -1556,7 +1829,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     wButton.setEnabled(false);
     // do something
 }
@@ -1580,10 +1857,18 @@ for (char c : characters) {
         xButton.setEnabled(false);
                 wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -1594,8 +1879,12 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    // do something
-    paintBody(body);
+            try {
+                // do something
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     xButton.setEnabled(false);
 }
     }//GEN-LAST:event_xButtonActionPerformed
@@ -1618,10 +1907,18 @@ for (char c : characters) {
         yButton.setEnabled(false);
                 wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -1632,7 +1929,11 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
     yButton.setEnabled(false);
     // do something
 }
@@ -1656,10 +1957,18 @@ for (char c : characters) {
 	 zButton.setEnabled(false);
                 wordGuessed++;
         if (length == 5 && wordGuessed == 5) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if (length == 8 && wordGuessed == 8) {
-            endGame();
+             try {
+                 endGame();
+             } catch (IOException ex) {
+                 Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else {
             
@@ -1670,18 +1979,26 @@ for (char c : characters) {
 if (!contains) {
     guesses--;
     points = points -10;
-    paintBody(body);
+            try {
+                paintBody(body);
+            } catch (IOException ex) {
+                Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
      zButton.setEnabled(false);
     // do something
 }
     }//GEN-LAST:event_zButtonActionPerformed
 
     private void skipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButtonActionPerformed
-        // TODO add your handling code here:
-        Endgame.score = 0;
-        this.dispose();
-        Endgame obj = new Endgame();
-        obj.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            Endgame.score = 0;
+            this.dispose();
+            Buttons obj = new Buttons();
+            obj.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
         
     }//GEN-LAST:event_skipButtonActionPerformed
@@ -1722,7 +2039,11 @@ if (!contains) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Hangman().setVisible(true);
+                try {
+                    new Hangman().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
             }
         });

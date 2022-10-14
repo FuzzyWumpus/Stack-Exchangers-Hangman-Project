@@ -4,6 +4,13 @@
  */
 package com.mycompany.hangmanprojectv1;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /***************************************************************  
 *  file: MainScreen.java  
 *  authors:Ethan Murguia, Tony Diaz, Anthony Roman, Nathan Elias, Sebastian Cursaro
@@ -28,8 +35,10 @@ public class Mainscreen extends javax.swing.JFrame {
     public Mainscreen() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        
     }
-
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,9 +117,13 @@ public class Mainscreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
-        this.dispose();
-        Hangman obj = new Hangman();
-        obj.setVisible(true);
+        try {
+            this.dispose();
+            Hangman obj = new Hangman();
+            obj.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(Mainscreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_StartActionPerformed
 
@@ -121,9 +134,13 @@ public class Mainscreen extends javax.swing.JFrame {
     }//GEN-LAST:event_CreditsActionPerformed
 
     private void ScoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ScoresActionPerformed
-         this.dispose();
-        Scores obj3 = new Scores();
-        obj3.setVisible(true);
+        try {
+            this.dispose();
+            Scores obj3 = new Scores();
+            obj3.setVisible(true);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Mainscreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_ScoresActionPerformed
 
     /**

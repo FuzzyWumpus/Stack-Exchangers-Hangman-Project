@@ -7,6 +7,7 @@ import java.util.Random;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
@@ -24,8 +25,8 @@ public class Buttons extends javax.swing.JFrame {
      * Creates new form Buttons
      */
     int[] locationArray;
-    static int buttonClicked;
-    
+    static int buttonClicked = 0;
+  
     Color red = new Color(255,0,0);
     Color  green   = new Color(0, 255,  0);
     Color  blue   = new Color(0, 0, 255);
@@ -48,17 +49,28 @@ public class Buttons extends javax.swing.JFrame {
     
     int score;
     
-    public Buttons() {
+    public Buttons() throws IOException {
         initComponents();
         clock();
         runGame();
         
         
-        
+      
         
         
     }
    
+    public void gameOver () throws IOException {
+        System.out.println(buttonClicked);
+        
+         if (buttonClicked == 5 || buttonClicked > 5) {
+        Endgame.score1 += score;
+        this.dispose();
+        Endgame obj = new Endgame();
+        obj.setVisible(true);
+       }
+    }
+            
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -376,12 +388,12 @@ public class Buttons extends javax.swing.JFrame {
                     int second=cal.get(Calendar.SECOND);
                     int minute =cal.get(Calendar.MINUTE);
                     int hour = cal.get(Calendar.HOUR);
-                    clock.setText("Date: " + month + "/" + day + "/"+year+" Time "+hour+":"+minute+";"+second+" ");
+                    clock.setText("Date: " + month + "/" + day + "/"+year+" Time "+hour+":"+minute+":"+second+" ");
                     
                     sleep(1000);
                     }
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 }
             
@@ -539,6 +551,11 @@ public class Buttons extends javax.swing.JFrame {
         if(buttonArray[0]==buttonArray[location1] && chosenColor==0){
         score = score +100;
         System.out.println(score);
+        try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         if(buttonClicked < 4)
         {
             runGame();
@@ -548,16 +565,27 @@ public class Buttons extends javax.swing.JFrame {
        if(buttonArray[0]==buttonArray[location2] && chosenColor==1){
         score = score +100;
         System.out.println(score);
+        try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         if(buttonClicked < 4)
         {
             runGame();
             buttonClicked++;
+            
         }
        
        }
        if(buttonArray[0]==buttonArray[location3] && chosenColor==2){
         score = score +100;
         System.out.println(score);
+        try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         if(buttonClicked < 4)
         {
             runGame();
@@ -568,6 +596,11 @@ public class Buttons extends javax.swing.JFrame {
        if(buttonArray[0]==buttonArray[location4] && chosenColor==3){
         score = score +100;
         System.out.println(score);
+        try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         if(buttonClicked < 4)
         {
             runGame();
@@ -578,13 +611,27 @@ public class Buttons extends javax.swing.JFrame {
        if(buttonArray[0]==buttonArray[location5] && chosenColor==4){
         score = score +100;
         System.out.println(score);
+        try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         if(buttonClicked < 4)
         {
             runGame();
             buttonClicked++;
         }
        }
-     
+       else {
+           score += 0;
+           //buttonClicked++;
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           runGame();
+       }
         
     }//GEN-LAST:event_jButton0MouseClicked
 
@@ -600,6 +647,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+        else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
          
        }
        if(buttonArray[1]==buttonArray[location2] && chosenColor==1){
@@ -609,6 +663,14 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+            
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
          
        }
@@ -620,7 +682,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
-        
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[1]==buttonArray[location4] && chosenColor==3){
         score = score +100;
@@ -629,6 +697,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[1]==buttonArray[location5] && chosenColor==4){
@@ -639,7 +714,25 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
+        else {
+           score += 0;
+          // buttonClicked++;
+           try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           runGame();
+       }
+       
     }//GEN-LAST:event_jButton1MousePressed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -653,6 +746,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[2]==buttonArray[location2] && chosenColor==1){
         score = score +100;
@@ -661,6 +761,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[2]==buttonArray[location3] && chosenColor==2){
@@ -671,6 +778,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[2]==buttonArray[location4] && chosenColor==3){
         score = score +100;
@@ -679,6 +793,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[2]==buttonArray[location5] && chosenColor==4){
@@ -689,6 +810,23 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       }
+        else {
+          // buttonClicked++;
+           score += 0;
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           runGame();
        }
     }//GEN-LAST:event_jButton2MouseClicked
 
@@ -703,14 +841,33 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[3]==buttonArray[location2] && chosenColor==1){
         score = score +100;
         System.out.println(score);
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         if(buttonClicked < 4)
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[3]==buttonArray[location3] && chosenColor==2){
@@ -721,6 +878,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[3]==buttonArray[location4] && chosenColor==3){
         score = score +100;
@@ -730,6 +894,14 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
        }
        if(buttonArray[3]==buttonArray[location5] && chosenColor==4){
         score = score +100;
@@ -739,6 +911,23 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       }
+        else {
+         //  buttonClicked++;
+           score += 0;
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           runGame();
        }
     }//GEN-LAST:event_jButton3MouseClicked
 
@@ -753,6 +942,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[4]==buttonArray[location2] && chosenColor==1){
         score = score +100;
@@ -761,6 +957,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[4]==buttonArray[location3] && chosenColor==2){
@@ -771,6 +974,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[4]==buttonArray[location4] && chosenColor==3){
         score = score +100;
@@ -779,6 +989,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[4]==buttonArray[location5] && chosenColor==4){
@@ -789,6 +1006,23 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       }
+        else {
+      //     buttonClicked++;
+           score += 0;
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           runGame();
        }
     }//GEN-LAST:event_jButton4MouseClicked
 
@@ -802,6 +1036,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[5]==buttonArray[location2] && chosenColor==1){
         score = score +100;
@@ -810,6 +1051,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[5]==buttonArray[location3] && chosenColor==2){
@@ -820,6 +1068,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[5]==buttonArray[location4] && chosenColor==3){
         score = score +100;
@@ -828,6 +1083,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[5]==buttonArray[location5] && chosenColor==4){
@@ -838,6 +1100,23 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       }
+        else {
+           score += 0;
+          // buttonClicked++;
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           runGame();
        }
     }//GEN-LAST:event_jButton5MouseClicked
 
@@ -852,6 +1131,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[6]==buttonArray[location2] && chosenColor==1){
         score = score +100;
@@ -860,6 +1146,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[6]==buttonArray[location3] && chosenColor==2){
@@ -870,6 +1163,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[6]==buttonArray[location4] && chosenColor==3){
         score = score +100;
@@ -878,6 +1178,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[6]==buttonArray[location5] && chosenColor==4){
@@ -888,6 +1195,23 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       }
+        else {
+           //buttonClicked++;
+           score += 0;
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           runGame();
        }
     }//GEN-LAST:event_jButton6MouseClicked
 
@@ -902,6 +1226,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[7]==buttonArray[location2] && chosenColor==1){
         score = score +100;
@@ -910,6 +1241,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[7]==buttonArray[location3] && chosenColor==2){
@@ -920,6 +1258,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[7]==buttonArray[location4] && chosenColor==3){
         score = score +100;
@@ -928,6 +1273,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[7]==buttonArray[location5] && chosenColor==4){
@@ -938,6 +1290,23 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       }
+        else {
+          // buttonClicked++;
+           score += 0;
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           runGame();
        }
     }//GEN-LAST:event_jButton7MouseClicked
 
@@ -952,6 +1321,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[8]==buttonArray[location2] && chosenColor==1){
         score = score +100;
@@ -961,6 +1337,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[8]==buttonArray[location3] && chosenColor==2){
         score = score +100;
@@ -969,6 +1352,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[8]==buttonArray[location4] && chosenColor==3){
@@ -988,6 +1378,23 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       }
+        else {
+       //    buttonClicked++;
+           score += 0;
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           runGame();
        }
     }//GEN-LAST:event_jButton8MouseClicked
 
@@ -1001,6 +1408,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[9]==buttonArray[location2] && chosenColor==1){
@@ -1020,6 +1434,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[9]==buttonArray[location4] && chosenColor==3){
         score = score +100;
@@ -1038,6 +1459,23 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       }
+        else {
+         //  buttonClicked++;
+           score += 0;
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           runGame();
        }
     }//GEN-LAST:event_jButton9MouseClicked
 
@@ -1052,6 +1490,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[10]==buttonArray[location2] && chosenColor==1){
         score = score +100;
@@ -1060,6 +1505,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[10]==buttonArray[location3] && chosenColor==2){
@@ -1070,6 +1522,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[10]==buttonArray[location4] && chosenColor==3){
         score = score +100;
@@ -1078,6 +1537,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[10]==buttonArray[location5] && chosenColor==4){
@@ -1088,6 +1554,23 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       }
+        else {
+           buttonClicked++;
+           score += 0;
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           runGame();
        }
     }//GEN-LAST:event_jButton10MouseClicked
 
@@ -1102,6 +1585,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[11]==buttonArray[location2] && chosenColor==1){
         score = score +100;
@@ -1110,6 +1600,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[11]==buttonArray[location3] && chosenColor==2){
@@ -1120,6 +1617,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[11]==buttonArray[location4] && chosenColor==3){
         score = score +100;
@@ -1128,6 +1632,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[11]==buttonArray[location5] && chosenColor==4){
@@ -1138,6 +1649,23 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       }
+        else {
+           buttonClicked++;
+           score += 0;
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           runGame();
        }
     }//GEN-LAST:event_jButton11MouseClicked
 
@@ -1152,6 +1680,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[12]==buttonArray[location2] && chosenColor==1){
         score = score +100;
@@ -1160,6 +1695,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        
@@ -1171,6 +1713,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        
        if(buttonArray[12]==buttonArray[location4] && chosenColor==3){
@@ -1181,6 +1730,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[12]==buttonArray[location5] && chosenColor==4){
         score = score +100;
@@ -1190,6 +1746,23 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       }
+        else {
+           buttonClicked++;
+           score += 0;
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           runGame();
        }
     }//GEN-LAST:event_jButton12MouseClicked
 
@@ -1204,6 +1777,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[13]==buttonArray[location2] && chosenColor==1){
         score = score +100;
@@ -1212,6 +1792,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[13]==buttonArray[location3] && chosenColor==2){
@@ -1222,6 +1809,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[13]==buttonArray[location4] && chosenColor==3){
         score = score +100;
@@ -1230,6 +1824,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[13]==buttonArray[location5] && chosenColor==4){
@@ -1240,6 +1841,23 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       }
+        else {
+           buttonClicked++;
+           score += 0;
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           runGame();
        }
     }//GEN-LAST:event_jButton13MouseClicked
 
@@ -1254,6 +1872,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[14]==buttonArray[location2] && chosenColor==1){
         score = score +100;
@@ -1262,6 +1887,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[14]==buttonArray[location3] && chosenColor==2){
@@ -1272,6 +1904,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[14]==buttonArray[location4] && chosenColor==3){
         score = score +100;
@@ -1280,6 +1919,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        
@@ -1291,6 +1937,23 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       }
+        else {
+           buttonClicked++;
+           score += 0;
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           runGame();
        }
     }//GEN-LAST:event_jButton14MouseClicked
 
@@ -1305,6 +1968,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[15]==buttonArray[location2] && chosenColor==1){
         score = score +100;
@@ -1313,6 +1983,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[15]==buttonArray[location3] && chosenColor==2){
@@ -1323,6 +2000,13 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
        }
        if(buttonArray[15]==buttonArray[location4] && chosenColor==3){
         score = score +100;
@@ -1331,6 +2015,13 @@ public class Buttons extends javax.swing.JFrame {
         {
             runGame();
             buttonClicked++;
+        }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        }
        if(buttonArray[15]==buttonArray[location5] && chosenColor==4){
@@ -1341,6 +2032,23 @@ public class Buttons extends javax.swing.JFrame {
             runGame();
             buttonClicked++;
         }
+         else {
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       }
+        else {
+           buttonClicked++;
+           score += 0;
+            try {
+                gameOver();
+            } catch (IOException ex) {
+                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           runGame();
        }
     }//GEN-LAST:event_jButton15MouseClicked
 
@@ -1536,7 +2244,11 @@ public class Buttons extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Buttons().setVisible(true);
+                try {
+                    new Buttons().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

@@ -12,7 +12,8 @@ package com.mycompany.hangmanprojectv1;
 public class HangmanProjectV1 {
 
     public static void main(String[] args) {
-        TitleScreen obj = new TitleScreen();
-         obj.setVisible(true);
+     //   TitleScreen obj = new TitleScreen();
+        Main obj2 = new Main();
+      //   obj.setVisible(true);
     }
 }

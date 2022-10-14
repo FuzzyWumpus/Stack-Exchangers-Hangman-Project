@@ -4,6 +4,12 @@
  */
 package com.mycompany.hangmanprojectv1;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /***************************************************************  
 *  file: Scores.java  
 *  authors:Ethan Murguia, Tony Diaz, Anthony Roman, Nathan Elias, Sebastian Cursaro
@@ -25,9 +31,53 @@ public class Scores extends javax.swing.JFrame {
     /**
      * Creates new form Scores
      */
-    public Scores() {
+    public Scores() throws FileNotFoundException {
         initComponents();
         setLocationRelativeTo(null);
+        displayScores();
+        //firstScore.setText("ABC " + Endgame.score);
+    }
+
+    private void displayScores() throws FileNotFoundException {
+        String name1 = "ABC";
+        String name2= "ABC";
+        String name3= "ABC";
+        String name4= "ABC";
+        String name5= "ABC";
+        int score1 = 0;
+        int score2 = 0;
+        int score3 = 0;
+        int score4 = 0;
+        int score5 = 0;
+                
+        File inputFile = new File("Highscores.txt");
+       Scanner openedFile = new Scanner(inputFile);
+       try {
+       name1 = openedFile.next();
+       score1 = openedFile.nextInt();
+       name2 = openedFile.next();
+       score2 = openedFile.nextInt();
+       name3 = openedFile.next();
+       score3 = openedFile.nextInt();
+       name4 = openedFile.next();
+       score4 = openedFile.nextInt();
+       name5 = openedFile.next();
+       score5 = openedFile.nextInt();
+       }
+       catch (Exception e) {
+           
+       }
+       firstScore.setText(name1 + " " + score1);
+       secondScore.setText(name2 + " " + score2);
+       thirdScore.setText(name3 + " " + score3);
+       fourthScore.setText(name4 + " " + score4);
+       fifthScore.setText(name5 + " " + score5);
+       
+       
+       
+       
+       
+       
     }
 
     /**
@@ -43,10 +93,10 @@ public class Scores extends javax.swing.JFrame {
         Back = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         firstScore = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        secondScore = new javax.swing.JLabel();
+        thirdScore = new javax.swing.JLabel();
+        fourthScore = new javax.swing.JLabel();
+        fifthScore = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 204, 255));
@@ -69,21 +119,21 @@ public class Scores extends javax.swing.JFrame {
         firstScore.setForeground(new java.awt.Color(255, 0, 51));
         firstScore.setText("ABC...00000");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel2.setText("ABC...00000");
+        secondScore.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        secondScore.setForeground(new java.awt.Color(255, 0, 51));
+        secondScore.setText("ABC...00000");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel3.setText("ABC...00000");
+        thirdScore.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        thirdScore.setForeground(new java.awt.Color(255, 0, 0));
+        thirdScore.setText("ABC...00000");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel4.setText("ABC...00000");
+        fourthScore.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        fourthScore.setForeground(new java.awt.Color(255, 0, 51));
+        fourthScore.setText("ABC...00000");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel5.setText("ABC...00000");
+        fifthScore.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        fifthScore.setForeground(new java.awt.Color(255, 0, 0));
+        fifthScore.setText("ABC...00000");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -99,10 +149,10 @@ public class Scores extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(200, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
+                    .addComponent(fifthScore)
+                    .addComponent(fourthScore)
+                    .addComponent(thirdScore)
+                    .addComponent(secondScore)
                     .addComponent(firstScore, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(184, 184, 184))
         );
@@ -114,13 +164,13 @@ public class Scores extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(firstScore, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(secondScore)
                 .addGap(7, 7, 7)
-                .addComponent(jLabel3)
+                .addComponent(thirdScore)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
+                .addComponent(fourthScore)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
+                .addComponent(fifthScore)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(Back)
                 .addGap(21, 21, 21))
@@ -180,19 +230,23 @@ public class Scores extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Scores().setVisible(true);
+                try {
+                    new Scores().setVisible(true);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Scores.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back;
+    private javax.swing.JLabel fifthScore;
     private javax.swing.JLabel firstScore;
+    private javax.swing.JLabel fourthScore;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel secondScore;
+    private javax.swing.JLabel thirdScore;
     // End of variables declaration//GEN-END:variables
 }

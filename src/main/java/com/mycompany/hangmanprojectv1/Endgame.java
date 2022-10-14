@@ -4,6 +4,13 @@
  */
 package com.mycompany.hangmanprojectv1;
 
+import java.util.*;
+import java.io.*;
+import java.util.Collections;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 /***************************************************************  
 *  file: Endgame.java  
 *  authors:Ethan Murguia, Tony Diaz, Anthony Roman, Nathan Elias, Sebastian Cursaro
@@ -22,20 +29,126 @@ package com.mycompany.hangmanprojectv1;
 public class Endgame extends javax.swing.JFrame {
 
     static int score;
- 
+    static int score1;
     /**
      * Creates new form Endgame
+     * @throws java.io.IOException
      */
-    public Endgame() {
+    public Endgame() throws IOException {
         
            
         initComponents();
+    
+        int total = score + score1;
+       yourScore.setText("Score: " + total);
         
-        yourScore.setText("Score: " + score);
-         setLocationRelativeTo(null);
-         
+        setLocationRelativeTo(null);
+        String username; 
+        int userScore; 
+        ArrayList<HighScores> sortedScores = new ArrayList<>();
+        //PrintWriter clear = new PrintWriter(new FileWriter("HighScores.txt"));
+        JFrame frame = new JFrame();
+        Object result = JOptionPane.showInputDialog(frame, "Enter initals:");
+                
+       // System.out.print("Enter initials: ");
+        //username = scnr.nextLine(); 
+        userScore = total; //total points from hangman instead of 100
+        username = result.toString();
+        
+         firstScore4.setText(username + " " + userScore);
     }
+    /*  
+       
+            Scanner fileScanner = new Scanner(saveScore(username, userScore)); 
+        
+            while(fileScanner.hasNext()){
+                userScore += 100; 
+                if(fileScanner.hasNextLine())
+                {
+                    sortedScores.add(new HighScores(fileScanner.next(), fileScanner.nextInt())); 
+                }
+                else
+                {
+                    fileScanner.next(); 
+                }
+                
+            }
+            Collections.sort(sortedScores, new SortByScore());
+            for (int i = sortedScores.size()-1; i>-1; i--)
+            {
+                finalScores(sortedScores.get(i)); 
+            }
+           
+            displayScores();
+ 
+            
+    }
+    
+           private void displayScores() throws FileNotFoundException {
+        String name1 = "ABC";
+        String name2= "ABC";
+        String name3= "ABC";
+        String name4= "ABC";
+        String name5= "ABC";
+        int score1 = 0;
+        int score2 = 0;
+        int score3 = 0;
+        int score4 = 0;
+        int score5 = 0;
+                
+        File inputFile = new File("Highscores.txt");
+       Scanner openedFile = new Scanner(inputFile);
+       try {
+       name1 = openedFile.next();
+       score1 = openedFile.nextInt();
+       name2 = openedFile.next();
+       score2 = openedFile.nextInt();
+       name3 = openedFile.next();
+       score3 = openedFile.nextInt();
+       name4 = openedFile.next();
+       score4 = openedFile.nextInt();
+       name5 = openedFile.next();
+       score5 = openedFile.nextInt();
+       
+       }
+       catch (Exception e) {
+           
+       }
+       
+       
+       firstScore4.setText(name1 + " " + score1);
+       firstScore.setText(name2 + " " + score2);
+       firstScore1.setText(name3 + " " + score3);
+       firstScore2.setText(name4 + " " + score4);
+       firstScore3.setText(name5 + " " + score5);
+       
+       
+       
+       
+       
+       
+    }
+           
+     public static File finalScores(HighScores Score)throws FileNotFoundException, IOException
+    {
+           PrintWriter orderedScores = new PrintWriter(new FileWriter("Highscores.txt", true)); 
+        orderedScores.println(Score);
+        orderedScores.close(); 
+        File readable = new File("Highscores.txt"); 
+        return readable; 
+    }
+    
+    public static File saveScore(String name, int score ) throws FileNotFoundException, IOException{
+        PrintWriter highScores = new PrintWriter(new FileWriter("scores.txt", true)); 
+        highScores.println(name + " " + score);
+        highScores.close(); 
+        
+        File readable = new File("scores.txt"); 
+        return readable; 
+    }  
 
+*/
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -175,7 +288,13 @@ public class Endgame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Endgame().setVisible(true);
+                
+                try {
+                    new Endgame().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Endgame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+              
             }
         });
     }
