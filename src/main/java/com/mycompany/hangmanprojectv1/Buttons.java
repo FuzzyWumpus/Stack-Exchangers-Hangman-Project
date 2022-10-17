@@ -557,7 +557,11 @@ public class Buttons extends javax.swing.JFrame {
         buttonClicked++;
       }
 
-      
+      public void sudoku(){
+          this.dispose();
+          Sudoku2 obj = new Sudoku2();
+          obj.setVisible(true);
+      }
      
          
       
@@ -569,7 +573,7 @@ public class Buttons extends javax.swing.JFrame {
         }
         if(buttonClicked == 5){
             score+=0;
-            //go to sudko write code here
+            sudoku();
         }
     }//GEN-LAST:event_jButton0MouseClicked
 
@@ -597,7 +601,7 @@ public class Buttons extends javax.swing.JFrame {
         }
         if(buttonClicked == 5){
             score+=100;
-            //go to sudko write code here
+            sudoku();
         }
     }//GEN-LAST:event_jButton3MouseClicked
 
@@ -646,7 +650,7 @@ public class Buttons extends javax.swing.JFrame {
         }
       if(buttonClicked == 5){
             score+=0;
-            //go to sudko write code here
+            sudoku();
         }
     }//GEN-LAST:event_jButton8MouseClicked
 
@@ -678,7 +682,7 @@ public class Buttons extends javax.swing.JFrame {
         }
        if(buttonClicked == 5){
             score+=0;
-            //go to sudko write code here
+            sudoku();
         }
     }//GEN-LAST:event_jButton11MouseClicked
 
@@ -702,7 +706,7 @@ public class Buttons extends javax.swing.JFrame {
         }
        if(buttonClicked == 5){
             score+=0;
-            //go to sudko write code here
+            sudoku();
         }
     }//GEN-LAST:event_jButton13MouseClicked
 
