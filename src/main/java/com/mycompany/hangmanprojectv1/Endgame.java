@@ -9,8 +9,14 @@ import java.io.*;
 import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
+import javax.swing.text.PlainDocument;
 /***************************************************************  
 *  file: Endgame.java  
 *  authors:Ethan Murguia, Tony Diaz, Anthony Roman, Nathan Elias, Sebastian Cursaro
@@ -27,7 +33,7 @@ import javax.swing.JOptionPane;
 //Purpose: takes the user back to the main screen upon clicking allowing them to play again
 
 public class Endgame extends javax.swing.JFrame {
-
+    private JFormattedTextField test; 
     static int score;
     static int score1;
     /**
@@ -43,20 +49,13 @@ public class Endgame extends javax.swing.JFrame {
        yourScore.setText("Score: " + total);
         
         setLocationRelativeTo(null);
-        String username; 
-        int userScore; 
-        ArrayList<HighScores> sortedScores = new ArrayList<>();
+
+        //ArrayList<HighScores> sortedScores = new ArrayList<>();
         //PrintWriter clear = new PrintWriter(new FileWriter("HighScores.txt"));
-        JFrame frame = new JFrame();
-        Object result = JOptionPane.showInputDialog(frame, "Enter initals:");
-                
-       // System.out.print("Enter initials: ");
-        //username = scnr.nextLine(); 
-        userScore = total; //total points from hangman instead of 100
-        username = result.toString();
-        
-         firstScore4.setText(username + " " + userScore);
     }
+     
+
+     
     /*  
        
             Scanner fileScanner = new Scanner(saveScore(username, userScore)); 
@@ -79,9 +78,10 @@ public class Endgame extends javax.swing.JFrame {
                 finalScores(sortedScores.get(i)); 
             }
            
-            displayScores();
+           // displayScores();
  
-            
+           
+    /*
     }
     
            private void displayScores() throws FileNotFoundException {
@@ -258,9 +258,7 @@ public class Endgame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-   
-  
+    public static void main(String args[]) throws IOException {
    
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -286,7 +284,92 @@ public class Endgame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        
+        String username; 
+        int userScore; 
+        int maxLength = 3;
+        int total = score + score1;
+        ArrayList<HighScores> sortedScores = new ArrayList<>();
+        PrintWriter clear = new PrintWriter(new FileWriter("HighScores.txt"));
+        JTextField newHighScore = new JTextField(maxLength);
+        
+        
+
+PlainDocument doc = new PlainDocument();
+doc.setDocumentFilter(new DocumentFilter() {
+    @Override
+    public void insertString(DocumentFilter.FilterBypass omit,
+                             int offset,
+                             String name,
+                             AttributeSet newAttribute)
+    throws BadLocationException {
+        int newLength =
+            omit.getDocument().getLength() + name.length();
+        if (newLength <= maxLength) {
+            super.insertString(omit, offset, name, newAttribute);
+        }
+    }
+
+    @Override
+    public void replace(DocumentFilter.FilterBypass omit,
+                        int offset,
+                        int length,
+                        String name,
+                        AttributeSet newAttribute)
+    throws BadLocationException {
+        int newLength =
+            omit.getDocument().getLength() - length + name.length();
+        if (newLength <= maxLength) {
+            super.replace(omit, offset, length, name, newAttribute);
+        }
+    }
+});
+newHighScore.setDocument(doc);
+        
+        
+        
+        JFrame frame = new JFrame();
+        
+         int result = JOptionPane.showOptionDialog(frame, new Object[] {
+        "Enter Initials",
+        newHighScore
+    },
+    "New High Score!",
+    JOptionPane.OK_CANCEL_OPTION,
+    JOptionPane.QUESTION_MESSAGE,
+    null, null, null);
+    
+          
+        userScore = total; //total points from hangman instead of 100
+        username = (result == JOptionPane.OK_OPTION ? newHighScore.getText() : null);
+        
+         
+     
+
+     
+     Scanner fileScanner = new Scanner(saveScore(username, userScore)); 
+        
+            while(fileScanner.hasNext()){
+                if(fileScanner.hasNextLine())
+                {
+                    sortedScores.add(new HighScores(fileScanner.next(), fileScanner.nextInt())); 
+                }
+                else
+                {
+                    fileScanner.next(); 
+                }
+                
+            }
+            Collections.sort(sortedScores, new SortByScore());
+            for (int i = sortedScores.size()-1; i>-1; i--)
+            {
+                finalScores(sortedScores.get(i)); 
+            }
+            
+                  Endgame test = new Endgame(); 
+      test.firstScore4.setText(username + " " + userScore);
+            
+            java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
                 try {
@@ -297,7 +380,33 @@ public class Endgame extends javax.swing.JFrame {
               
             }
         });
+                    
+            
+           
     }
+    
+    
+    public static File finalScores(HighScores Score)throws FileNotFoundException, IOException
+    {
+        try (PrintWriter orderedScores = new PrintWriter(new FileWriter("Highscores.txt", true))) {
+            orderedScores.println(Score);
+        } 
+        File readable = new File("Highscores.txt"); 
+        return readable; 
+    }
+    
+    public static File saveScore(String name, int score ) throws FileNotFoundException, IOException{
+        try (PrintWriter highScores = new PrintWriter(new FileWriter("scores.txt", true))) {
+            highScores.println(name + " " + score);
+        } 
+        
+        File readable = new File("scores.txt"); 
+        return readable; 
+    }  
+    
+
+        
+        
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton End;
