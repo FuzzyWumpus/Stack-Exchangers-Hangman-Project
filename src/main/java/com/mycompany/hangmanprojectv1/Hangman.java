@@ -1990,15 +1990,11 @@ if (!contains) {
     }//GEN-LAST:event_zButtonActionPerformed
 
     private void skipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButtonActionPerformed
-        try {
-            // TODO add your handling code here:
-            Endgame.score = 0;
-            this.dispose();
-            Buttons obj = new Buttons();
-            obj.setVisible(true);
-        } catch (IOException ex) {
-            Logger.getLogger(Hangman.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        // TODO add your handling code here:
+        Endgame.score = 0;
+        this.dispose();
+        Buttons obj = new Buttons();
+        obj.setVisible(true);
        
         
     }//GEN-LAST:event_skipButtonActionPerformed

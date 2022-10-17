@@ -84,6 +84,7 @@ public class CreditScreen extends javax.swing.JFrame {
         jLabel6.setText("Tony Diaz, 015563067");
 
         jButton1.setText("Back");
+        jButton1.setToolTipText("Back to start screen");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

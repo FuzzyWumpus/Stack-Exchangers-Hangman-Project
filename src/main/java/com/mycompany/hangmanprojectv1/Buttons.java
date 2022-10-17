@@ -3,11 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.hangmanprojectv1;
-import java.util.Random;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
@@ -17,60 +14,32 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author tony
+ * @author anthony, tony
  */
 public class Buttons extends javax.swing.JFrame {
     
     /**
      * Creates new form Buttons
      */
-    int[] locationArray;
     static int buttonClicked = 0;
-  
+    
     Color red = new Color(255,0,0);
     Color  green   = new Color(0, 255,  0);
     Color  blue   = new Color(0, 0, 255);
     Color purple = new Color(200, 0, 255);
     Color yellow = new Color(255, 255, 0);
     
-    int chosenColor; 
-    Color[] colorArray = new Color[5];
-    
     JButton[] buttonArray = new JButton[16];
     
-    int location1;//blue
-    int location2;//red
-    int location3;//yellow
-    int location4;//green
-    int location5;//purple
-    
-    
-    String chosenWord;//selected color
-    
+   
     int score;
     
-    public Buttons() throws IOException {
+    public Buttons() {
         initComponents();
         clock();
         runGame();
-        
-        
-      
-        
-        
     }
    
-    public void gameOver () throws IOException {
-        System.out.println(buttonClicked);
-        
-         if (buttonClicked == 5 || buttonClicked > 5) {
-        Endgame.score1 += score;
-        this.dispose();
-        Endgame obj = new Endgame();
-        obj.setVisible(true);
-       }
-    }
-            
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -102,7 +71,6 @@ public class Buttons extends javax.swing.JFrame {
         jButton15 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 400));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(600, 400));
 
@@ -123,6 +91,11 @@ public class Buttons extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jButton0MouseExited(evt);
+            }
+        });
+        jButton0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton0ActionPerformed(evt);
             }
         });
         jPanel2.add(jButton0);
@@ -190,6 +163,11 @@ public class Buttons extends javax.swing.JFrame {
                 jButton5MouseExited(evt);
             }
         });
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton5);
 
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -201,6 +179,11 @@ public class Buttons extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jButton6MouseExited(evt);
+            }
+        });
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
             }
         });
         jPanel2.add(jButton6);
@@ -253,6 +236,11 @@ public class Buttons extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jButton10MouseExited(evt);
+            }
+        });
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
             }
         });
         jPanel2.add(jButton10);
@@ -388,14 +376,14 @@ public class Buttons extends javax.swing.JFrame {
                     int second=cal.get(Calendar.SECOND);
                     int minute =cal.get(Calendar.MINUTE);
                     int hour = cal.get(Calendar.HOUR);
-                    clock.setText("Date: " + month + "/" + day + "/"+year+" Time "+hour+":"+minute+":"+second+" ");
+                    clock.setText("Date: " + month + "/" + day + "/"+year+" Time "+hour+":"+minute+";"+second+" ");
                     
                     sleep(1000);
                     }
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                }
+                } //catch (InterruptedException ex) {
+                                    }
             
             
         };
@@ -403,78 +391,10 @@ public class Buttons extends javax.swing.JFrame {
             
         
     }
-    private int[] buttonDecision()
-      {
-          int[] locations = new int[5];
-          int l1;
-          int l2;
-          int l3;
-          int l4;
-          int l5;
-          Random rand = new Random();
-          l1 = rand.nextInt(16); 
-          buttonArray[l1].setBackground(blue);
-          
-          
-          l2 = rand.nextInt(16);
-          if(l2==l1)
-          {
-              l2=rand.nextInt(16);
-          }
-          buttonArray[l2].setBackground(red);
-          l3 = rand.nextInt(16);
-          if(l3==l1 || l3==l2)
-          {
-              l3=rand.nextInt(16);
-          }
-          buttonArray[l3].setBackground(yellow);
-          l4 = rand.nextInt(16);
-          if(l4==l1 || l4==l2 || l4 == l3)
-          {
-              l4= rand.nextInt(16);
-          }
-          buttonArray[l4].setBackground(green);
-          l5 = rand.nextInt(16);
-          if(l5==l1 || l5==l2 || l5 == l3 || l5==l4)
-          {
-              l5= rand.nextInt(16);
-          }
-          buttonArray[l5].setBackground(purple);
-          
-          locations[0]= l1;
-          locations[1]= l2;
-          locations[2]= l3;
-          locations[3]= l4;
-          locations[4]= l5;
-          return locations;
-      }
-      public String randomWord()
-      {
-        Random rand = new Random();
-        String[] words = new String[5];
-        words[0] = "BLUE";
-        words[1] = "RED";
-        words[2] = "YELLOW";
-        words[3] = "GREEN";
-        words[4] = "PURPLE";
         
-        int choose = rand.nextInt(5);
-        return words[choose];
-      }
-      
-      public int randomColor()
-      {
-          Random rand = new Random();
-          
-          int choose = rand.nextInt(5);
-          return choose;
-         
-          
-      }
-      
-      public void runGame()
-      {
-          jButton0.setVisible(false);
+ 
+      public void setInvisible(){
+        jButton0.setVisible(false);
         jButton1.setVisible(false);
         jButton2.setVisible(false);
         jButton3.setVisible(false);
@@ -489,7 +409,11 @@ public class Buttons extends javax.swing.JFrame {
         jButton12.setVisible(false);
         jButton13.setVisible(false);
         jButton14.setVisible(false);
-        jButton15.setVisible(false);
+        jButton15.setVisible(false);  
+      }
+      
+      public void runGame()
+      {
         
         buttonArray[0]= jButton0;
         buttonArray[1]= jButton1;
@@ -508,1548 +432,302 @@ public class Buttons extends javax.swing.JFrame {
         buttonArray[14]= jButton14;
         buttonArray[15]= jButton15;
         
-        locationArray = buttonDecision();
+        game1();
         
-        location1= locationArray[0];//blue
-        location2 = locationArray[1];//red
-        location3 = locationArray[2];//yellow
-        location4 = locationArray[3];//green
-        location5 = locationArray[4];//purple
-        
-        buttonArray[location1].setVisible(true);
-        buttonArray[location2].setVisible(true);
-        buttonArray[location3].setVisible(true);
-        buttonArray[location4].setVisible(true);
-        buttonArray[location5].setVisible(true);
-        
-        chosenWord = randomWord();
-        jLabel2.setText(chosenWord);
-        
-        
-        colorArray[0]= blue;
-        colorArray[1]= red;
-        colorArray[2]=yellow;
-        colorArray[3]=green;
-        colorArray[4]=purple; 
-        
-        chosenColor=randomColor();
-       
-        
-        jLabel2.setForeground(colorArray[chosenColor]);
-        jLabel2.setFont(new Font("Serif",Font.BOLD,25));
       }
       
-  
+      public void game1(){
+          
+        setInvisible();
+        jLabel2.setText("Purple");
+        jLabel2.setForeground(red);
+        jLabel2.setFont(new Font("Serif",Font.BOLD,25));
+        
+        jButton6.setVisible(true);
+        jButton6.setBackground(red);
+        
+        jButton7.setVisible(true);
+        jButton7.setBackground(purple);
+        
+        jButton15.setVisible(true);
+        jButton15.setBackground(green);
+        
+        jButton12.setVisible(true);
+        jButton12.setBackground(blue);
+        
+        jButton3.setVisible(true);
+        jButton3.setBackground(yellow);
+        
+        buttonClicked++;
+      }
       
+      public void game2(){
+        setInvisible();
+        jLabel2.setText("Green");
+        jLabel2.setForeground(blue);
+        jLabel2.setFont(new Font("Serif",Font.BOLD,25));
+        
+        jButton10.setVisible(true);
+        jButton10.setBackground(blue);
+        
+        jButton4.setVisible(true);
+        jButton4.setBackground(red);
+        
+        jButton8.setVisible(true);
+        jButton8.setBackground(purple);
+        
+        jButton13.setVisible(true);
+        jButton13.setBackground(green);
+        
+        jButton0.setVisible(true);
+        jButton0.setBackground(yellow);
+        
+        buttonClicked++;
+      }
+      
+      public void game3(){
+          setInvisible();
+        jLabel2.setText("Yellow");
+        jLabel2.setForeground(green);
+        jLabel2.setFont(new Font("Serif",Font.BOLD,25));
+        
+        jButton2.setVisible(true);
+        jButton2.setBackground(green);
+        
+        jButton11.setVisible(true);
+        jButton11.setBackground(red);
+        
+        jButton14.setVisible(true);
+        jButton14.setBackground(purple);
+        
+        jButton5.setVisible(true);
+        jButton5.setBackground(blue);
+        
+        jButton9.setVisible(true);
+        jButton9.setBackground(yellow);
+        
+        buttonClicked++;
+      }
+      
+      public void game4(){
+          setInvisible();
+        jLabel2.setText("Blue");
+        jLabel2.setForeground(purple);
+        jLabel2.setFont(new Font("Serif",Font.BOLD,25));
+        
+        jButton12.setVisible(true);
+        jButton12.setBackground(purple);
+        
+        jButton1.setVisible(true);
+        jButton1.setBackground(red);
+        
+        jButton6.setVisible(true);
+        jButton6.setBackground(green);
+        
+        jButton9.setVisible(true);
+        jButton9.setBackground(blue);
+        
+        jButton15.setVisible(true);
+        jButton15.setBackground(yellow);
+        
+        buttonClicked++;
+      }
+      
+      public void game5(){
+          setInvisible();
+        jLabel2.setText("Red");
+        jLabel2.setForeground(yellow);
+        jLabel2.setFont(new Font("Serif",Font.BOLD,25));
+        
+        jButton3.setVisible(true);
+        jButton3.setBackground(yellow);
+        
+        jButton11.setVisible(true);
+        jButton11.setBackground(red);
+        
+        jButton13.setVisible(true);
+        jButton13.setBackground(green);
+        
+        jButton0.setVisible(true);
+        jButton0.setBackground(blue);
+        
+        jButton8.setVisible(true);
+        jButton8.setBackground(purple);
+        
+        buttonClicked++;
+      }
+
+      public void sudoku(){
+          this.dispose();
+          Sudoku2 obj = new Sudoku2();
+          obj.setVisible(true);
+      }
      
          
       
     private void jButton0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton0MouseClicked
         // TODO add your handling code here:
-     
-        
-        if(buttonArray[0]==buttonArray[location1] && chosenColor==0){
-        score = score +100;
-        System.out.println(score);
-        try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
+        if(buttonClicked == 2){
+            score+=0;
+            game3();
         }
-       }
-       if(buttonArray[0]==buttonArray[location2] && chosenColor==1){
-        score = score +100;
-        System.out.println(score);
-        try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-            
+        if(buttonClicked == 5){
+            score+=0;
+            sudoku();
         }
-       
-       }
-       if(buttonArray[0]==buttonArray[location3] && chosenColor==2){
-        score = score +100;
-        System.out.println(score);
-        try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-       
-       }
-       if(buttonArray[0]==buttonArray[location4] && chosenColor==3){
-        score = score +100;
-        System.out.println(score);
-        try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-        
-       }
-       if(buttonArray[0]==buttonArray[location5] && chosenColor==4){
-        score = score +100;
-        System.out.println(score);
-        try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-       }
-       else {
-           score += 0;
-           //buttonClicked++;
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           runGame();
-       }
-        
     }//GEN-LAST:event_jButton0MouseClicked
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
         // TODO add your handling code here:
-        
-       
-        if(buttonArray[1]==buttonArray[location1] && chosenColor==0){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
+        if(buttonClicked == 4){
+            score+=0;
+            game5();
         }
-        else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-         
-       }
-       if(buttonArray[1]==buttonArray[location2] && chosenColor==1){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-            
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-         
-       }
-       if(buttonArray[1]==buttonArray[location3] && chosenColor==2){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[1]==buttonArray[location4] && chosenColor==3){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[1]==buttonArray[location5] && chosenColor==4){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-        else {
-           score += 0;
-          // buttonClicked++;
-           try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           runGame();
-       }
-       
     }//GEN-LAST:event_jButton1MousePressed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-
-        if(buttonArray[2]==buttonArray[location1] && chosenColor==0){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
+        if(buttonClicked == 3){
+            score+=100;
+            game4();
         }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[2]==buttonArray[location2] && chosenColor==1){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[2]==buttonArray[location3] && chosenColor==2){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[2]==buttonArray[location4] && chosenColor==3){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[2]==buttonArray[location5] && chosenColor==4){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-        else {
-          // buttonClicked++;
-           score += 0;
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           runGame();
-       }
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        
-        if(buttonArray[3]==buttonArray[location1] && chosenColor==0){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
+        if(buttonClicked == 1){
+            score+=0;
+            game2();
         }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        if(buttonClicked == 5){
+            score+=100;
+            sudoku();
         }
-       }
-       if(buttonArray[3]==buttonArray[location2] && chosenColor==1){
-        score = score +100;
-        System.out.println(score);
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[3]==buttonArray[location3] && chosenColor==2){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[3]==buttonArray[location4] && chosenColor==3){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
-       }
-       if(buttonArray[3]==buttonArray[location5] && chosenColor==4){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-        else {
-         //  buttonClicked++;
-           score += 0;
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           runGame();
-       }
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
-
-        if(buttonArray[4]==buttonArray[location1] && chosenColor==0){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
+        if(buttonClicked == 2){
+            score+=0;
+            game3();
         }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[4]==buttonArray[location2] && chosenColor==1){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[4]==buttonArray[location3] && chosenColor==2){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[4]==buttonArray[location4] && chosenColor==3){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[4]==buttonArray[location5] && chosenColor==4){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-        else {
-      //     buttonClicked++;
-           score += 0;
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           runGame();
-       }
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         // TODO add your handling code here:
-       if(buttonArray[5]==buttonArray[location1] && chosenColor==0){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
+        if(buttonClicked == 3){
+            score+=0;
+            game4();
         }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[5]==buttonArray[location2] && chosenColor==1){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[5]==buttonArray[location3] && chosenColor==2){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[5]==buttonArray[location4] && chosenColor==3){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[5]==buttonArray[location5] && chosenColor==4){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-        else {
-           score += 0;
-          // buttonClicked++;
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           runGame();
-       }
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         // TODO add your handling code here:
-       
-        if(buttonArray[6]==buttonArray[location1] && chosenColor==0){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
+        if(buttonClicked == 1){
+            score+=100;
+            game2();
         }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        if(buttonClicked == 4){
+            score+=0;
+            game5();
         }
-       }
-       if(buttonArray[6]==buttonArray[location2] && chosenColor==1){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[6]==buttonArray[location3] && chosenColor==2){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[6]==buttonArray[location4] && chosenColor==3){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[6]==buttonArray[location5] && chosenColor==4){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-        else {
-           //buttonClicked++;
-           score += 0;
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           runGame();
-       }
+        
     }//GEN-LAST:event_jButton6MouseClicked
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
         // TODO add your handling code here:
-       
-        if(buttonArray[7]==buttonArray[location1] && chosenColor==0){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
+      if(buttonClicked == 1){
+            score+=0;
+            game2();
         }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[7]==buttonArray[location2] && chosenColor==1){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[7]==buttonArray[location3] && chosenColor==2){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[7]==buttonArray[location4] && chosenColor==3){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[7]==buttonArray[location5] && chosenColor==4){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-        else {
-          // buttonClicked++;
-           score += 0;
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           runGame();
-       }
     }//GEN-LAST:event_jButton7MouseClicked
 
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
         // TODO add your handling code here:
-      
-        if(buttonArray[8]==buttonArray[location1] && chosenColor==0){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
+      if(buttonClicked == 2){
+            score+=0;
+            game3();
         }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
+      if(buttonClicked == 5){
+            score+=0;
+            sudoku();
         }
-       }
-       if(buttonArray[8]==buttonArray[location2] && chosenColor==1){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[8]==buttonArray[location3] && chosenColor==2){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[8]==buttonArray[location4] && chosenColor==3){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-       }
-       if(buttonArray[8]==buttonArray[location5] && chosenColor==4){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-        else {
-       //    buttonClicked++;
-           score += 0;
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           runGame();
-       }
     }//GEN-LAST:event_jButton8MouseClicked
 
     private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
         // TODO add your handling code here:
-       
-        if(buttonArray[9]==buttonArray[location1] && chosenColor==0){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
+       if(buttonClicked == 3){
+            score+=0;
+            game4();
         }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
+       if(buttonClicked == 4){
+            score+=0;
+            game5();
         }
-       }
-       if(buttonArray[9]==buttonArray[location2] && chosenColor==1){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-       }
-       if(buttonArray[9]==buttonArray[location3] && chosenColor==2){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[9]==buttonArray[location4] && chosenColor==3){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-       }
-       if(buttonArray[9]==buttonArray[location5] && chosenColor==4){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-        else {
-         //  buttonClicked++;
-           score += 0;
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           runGame();
-       }
     }//GEN-LAST:event_jButton9MouseClicked
 
     private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
         // TODO add your handling code here:
-       
-        if(buttonArray[10]==buttonArray[location1] && chosenColor==0){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
+        if(buttonClicked == 2){
+            score+=1000;
+            game3();
         }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[10]==buttonArray[location2] && chosenColor==1){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[10]==buttonArray[location3] && chosenColor==2){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[10]==buttonArray[location4] && chosenColor==3){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[10]==buttonArray[location5] && chosenColor==4){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-        else {
-           buttonClicked++;
-           score += 0;
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           runGame();
-       }
     }//GEN-LAST:event_jButton10MouseClicked
 
     private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
         // TODO add your handling code here:
-       
-        if(buttonArray[11]==buttonArray[location1] && chosenColor==0){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
+       if(buttonClicked == 3){
+            score+=0;
+            game4();
         }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
+       if(buttonClicked == 5){
+            score+=0;
+            sudoku();
         }
-       }
-       if(buttonArray[11]==buttonArray[location2] && chosenColor==1){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[11]==buttonArray[location3] && chosenColor==2){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[11]==buttonArray[location4] && chosenColor==3){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[11]==buttonArray[location5] && chosenColor==4){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-        else {
-           buttonClicked++;
-           score += 0;
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           runGame();
-       }
     }//GEN-LAST:event_jButton11MouseClicked
 
     private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
         // TODO add your handling code here:
-      
-        if(buttonArray[12]==buttonArray[location1] && chosenColor==0){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
+        if(buttonClicked == 1){
+            score+=0;
+            game2();
         }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        if(buttonClicked == 4){
+            score+=100;
+            game5();
         }
-       }
-       if(buttonArray[12]==buttonArray[location2] && chosenColor==1){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       
-       if(buttonArray[12]==buttonArray[location3] && chosenColor==2){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       
-       if(buttonArray[12]==buttonArray[location4] && chosenColor==3){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[12]==buttonArray[location5] && chosenColor==4){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-        else {
-           buttonClicked++;
-           score += 0;
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           runGame();
-       }
     }//GEN-LAST:event_jButton12MouseClicked
 
     private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
         // TODO add your handling code here:
-       
-        if(buttonArray[13]==buttonArray[location1] && chosenColor==0){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
+       if(buttonClicked == 2){
+            score+=0;
+            game3();
         }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
+       if(buttonClicked == 5){
+            score+=0;
+            sudoku();
         }
-       }
-       if(buttonArray[13]==buttonArray[location2] && chosenColor==1){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[13]==buttonArray[location3] && chosenColor==2){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[13]==buttonArray[location4] && chosenColor==3){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[13]==buttonArray[location5] && chosenColor==4){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-        else {
-           buttonClicked++;
-           score += 0;
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           runGame();
-       }
     }//GEN-LAST:event_jButton13MouseClicked
 
     private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
         // TODO add your handling code here:
-       
-        if(buttonArray[14]==buttonArray[location1] && chosenColor==0){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
+       if(buttonClicked == 3){
+            score+=0;
+            game4();
         }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[14]==buttonArray[location2] && chosenColor==1){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[14]==buttonArray[location3] && chosenColor==2){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[14]==buttonArray[location4] && chosenColor==3){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       
-       if(buttonArray[14]==buttonArray[location5] && chosenColor==4){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-        else {
-           buttonClicked++;
-           score += 0;
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           runGame();
-       }
     }//GEN-LAST:event_jButton14MouseClicked
 
     private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
         // TODO add your handling code here:
-       
-        if(buttonArray[15]==buttonArray[location1] && chosenColor==0){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
+       if(buttonClicked == 1){
+            score+=0;
+            game2();
         }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
+       if(buttonClicked == 4){
+            score+=0;
+            game5();
         }
-       }
-       if(buttonArray[15]==buttonArray[location2] && chosenColor==1){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[15]==buttonArray[location3] && chosenColor==2){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[15]==buttonArray[location4] && chosenColor==3){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-       if(buttonArray[15]==buttonArray[location5] && chosenColor==4){
-        score = score +100;
-        System.out.println(score);
-        if(buttonClicked < 4)
-        {
-            runGame();
-            buttonClicked++;
-        }
-         else {
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-       }
-        else {
-           buttonClicked++;
-           score += 0;
-            try {
-                gameOver();
-            } catch (IOException ex) {
-                Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           runGame();
-       }
     }//GEN-LAST:event_jButton15MouseClicked
 
     private void jButton0MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton0MouseEntered
@@ -2211,6 +889,22 @@ public class Buttons extends javax.swing.JFrame {
         // TODO add your handling code here:
         jButton15.setBorderPainted(false);
     }//GEN-LAST:event_jButton15MouseExited
+
+    private void jButton0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton0ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton0ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -2244,11 +938,7 @@ public class Buttons extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new Buttons().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(Buttons.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new Buttons().setVisible(true);
             }
         });
     }
