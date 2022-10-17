@@ -6,13 +6,20 @@ package com.mycompany.hangmanprojectv1;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
 import static java.lang.Thread.sleep;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -32,6 +39,33 @@ int[][] userBoard = {{8,0,0,4,0,6,0,0,7},{0,0,0,0,0,0,4,0,0},{0,1,0,0,0,0,6,5,0}
         initComponents();
         clock();
         setLocationRelativeTo(null);
+         getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+            KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "Cancel"); //$NON-NLS-1$
+        getRootPane().getActionMap().put("Cancel", new AbstractAction(){ //$NON-NLS-1$
+            public void actionPerformed(ActionEvent e)
+            {
+                System.exit(0);
+            }
+        });
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+            KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), "Pop"); //$NON-NLS-1$
+        getRootPane().getActionMap().put("Pop", new AbstractAction(){ //$NON-NLS-1$
+            public void actionPerformed(ActionEvent z)
+            {
+                popUp obj2 = new popUp();
+                obj2.setVisible(true);
+                
+            }
+        });
+        
+        // on close window the close method is called
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) 
+            {
+                System.exit(0);
+            }
+        });
        
         
     }
@@ -1387,9 +1421,11 @@ int[][] userBoard = {{8,0,0,4,0,6,0,0,7},{0,0,0,0,0,0,4,0,0},{0,1,0,0,0,0,6,5,0}
         getContentPane().add(game, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 420, 360));
 
         quit.setText("Quit");
+        quit.setToolTipText("Quits game");
         getContentPane().add(quit, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
 
         submit.setText("Submit");
+        submit.setToolTipText("Submit your game sheet");
         submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitActionPerformed(evt);

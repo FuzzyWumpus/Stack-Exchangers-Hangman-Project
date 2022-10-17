@@ -6,10 +6,17 @@ package com.mycompany.hangmanprojectv1;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
+import javax.swing.WindowConstants;
 
 /***************************************************************  
 *  file: MainScreen.java  
@@ -35,6 +42,34 @@ public class Mainscreen extends javax.swing.JFrame {
     public Mainscreen() {
         initComponents();
         setLocationRelativeTo(null);
+         getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+            KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "Cancel"); //$NON-NLS-1$
+        getRootPane().getActionMap().put("Cancel", new AbstractAction(){ //$NON-NLS-1$
+            public void actionPerformed(ActionEvent e)
+            {
+                System.exit(0);
+            }
+        });
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) 
+            {
+                System.exit(0);
+            }
+        });
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+            KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), "Pop"); //$NON-NLS-1$
+        getRootPane().getActionMap().put("Pop", new AbstractAction(){ //$NON-NLS-1$
+            public void actionPerformed(ActionEvent z)
+            {
+                popUp obj2 = new popUp();
+                obj2.setVisible(true);
+                
+            }
+        });
+        
+        // on close window the close method is called
+        
         
         
     }
@@ -58,6 +93,7 @@ public class Mainscreen extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 51, 204));
 
         Start.setText("Start");
+        Start.setToolTipText("Starts the game");
         Start.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 StartActionPerformed(evt);
@@ -65,6 +101,7 @@ public class Mainscreen extends javax.swing.JFrame {
         });
 
         Scores.setText("Highscores");
+        Scores.setToolTipText("Takes you to highscores");
         Scores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ScoresActionPerformed(evt);
@@ -72,6 +109,7 @@ public class Mainscreen extends javax.swing.JFrame {
         });
 
         Credits.setText("Credits");
+        Credits.setToolTipText("Takes you to credits");
         Credits.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CreditsActionPerformed(evt);

@@ -4,11 +4,18 @@
  */
 package com.mycompany.hangmanprojectv1;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
+import javax.swing.WindowConstants;
 
 /***************************************************************  
 *  file: Scores.java  
@@ -36,6 +43,33 @@ public class Scores extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         displayScores();
         //firstScore.setText("ABC " + Endgame.score);
+         getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+            KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "Cancel"); //$NON-NLS-1$
+        getRootPane().getActionMap().put("Cancel", new AbstractAction(){ //$NON-NLS-1$
+            public void actionPerformed(ActionEvent e)
+            {
+                System.exit(0);
+            }
+        });
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+            KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), "Pop"); //$NON-NLS-1$
+        getRootPane().getActionMap().put("Pop", new AbstractAction(){ //$NON-NLS-1$
+            public void actionPerformed(ActionEvent z)
+            {
+                popUp obj2 = new popUp();
+                obj2.setVisible(true);
+                
+            }
+        });
+        
+        // on close window the close method is called
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) 
+            {
+                System.exit(0);
+            }
+        });
     }
 
     private void displayScores() throws FileNotFoundException {
@@ -104,6 +138,7 @@ public class Scores extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
         Back.setText("Back");
+        Back.setToolTipText("Back to start screen");
         Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackActionPerformed(evt);

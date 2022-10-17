@@ -4,13 +4,20 @@
  */
 package com.mycompany.hangmanprojectv1;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
 import java.util.*;
 import java.io.*;
 import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
+import javax.swing.WindowConstants;
 /***************************************************************  
 *  file: Endgame.java  
 *  authors:Ethan Murguia, Tony Diaz, Anthony Roman, Nathan Elias, Sebastian Cursaro
@@ -56,6 +63,33 @@ public class Endgame extends javax.swing.JFrame {
         username = result.toString();
         
          firstScore4.setText(username + " " + userScore);
+          getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+            KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "Cancel"); //$NON-NLS-1$
+        getRootPane().getActionMap().put("Cancel", new AbstractAction(){ //$NON-NLS-1$
+            public void actionPerformed(ActionEvent e)
+            {
+                System.exit(0);
+            }
+        });
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+            KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), "Pop"); //$NON-NLS-1$
+        getRootPane().getActionMap().put("Pop", new AbstractAction(){ //$NON-NLS-1$
+            public void actionPerformed(ActionEvent z)
+            {
+                popUp obj2 = new popUp();
+                obj2.setVisible(true);
+                
+            }
+        });
+        
+        // on close window the close method is called
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) 
+            {
+                System.exit(0);
+            }
+        });
     }
     /*  
        
@@ -173,6 +207,7 @@ public class Endgame extends javax.swing.JFrame {
         jLabel1.setText("Highscores");
 
         End.setText("End");
+        End.setToolTipText("Ends the game");
         End.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EndActionPerformed(evt);

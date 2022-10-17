@@ -72,6 +72,7 @@
         <Component class="javax.swing.JButton" name="Start">
           <Properties>
             <Property name="text" type="java.lang.String" value="Start"/>
+            <Property name="toolTipText" type="java.lang.String" value="Starts the game"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StartActionPerformed"/>
@@ -80,6 +81,7 @@
         <Component class="javax.swing.JButton" name="Scores">
           <Properties>
             <Property name="text" type="java.lang.String" value="Highscores"/>
+            <Property name="toolTipText" type="java.lang.String" value="Takes you to highscores"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ScoresActionPerformed"/>
@@ -88,6 +90,7 @@
         <Component class="javax.swing.JButton" name="Credits">
           <Properties>
             <Property name="text" type="java.lang.String" value="Credits"/>
+            <Property name="toolTipText" type="java.lang.String" value="Takes you to credits"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreditsActionPerformed"/>

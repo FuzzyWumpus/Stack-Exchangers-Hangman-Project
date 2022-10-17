@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
 import java.awt.geom.AffineTransform;
 import java.io.IOException;
 import java.util.Calendar;
@@ -16,8 +18,13 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Arrays;
+import javax.swing.AbstractAction;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.KeyStroke;
+import javax.swing.Popup;
+import javax.swing.WindowConstants;
 
 /***************************************************************  
 *  file: Hangman.java  
@@ -95,9 +102,38 @@ public class Hangman extends javax.swing.JFrame {
         paintBody(body);
         }
         
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+            KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "Cancel"); //$NON-NLS-1$
+        getRootPane().getActionMap().put("Cancel", new AbstractAction(){ //$NON-NLS-1$
+            public void actionPerformed(ActionEvent e)
+            {
+                System.exit(0);
+            }
+        });
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+            KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), "Pop"); //$NON-NLS-1$
+        getRootPane().getActionMap().put("Pop", new AbstractAction(){ //$NON-NLS-1$
+            public void actionPerformed(ActionEvent z)
+            {
+                popUp obj2 = new popUp();
+                obj2.setVisible(true);
+                
+            }
+        });
+        
+        // on close window the close method is called
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) 
+            {
+                System.exit(0);
+            }
+        });
+        
         
         
     }
+    
     
     String t;
     int length;
@@ -395,6 +431,7 @@ public class Hangman extends javax.swing.JFrame {
         game.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         aButton.setText("A");
+        aButton.setToolTipText("Select letter \"A\"");
         aButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aButtonActionPerformed(evt);
@@ -403,6 +440,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(aButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 43, -1));
 
         bButton.setText("B");
+        bButton.setToolTipText("Select letter \"B\"");
         bButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bButtonActionPerformed(evt);
@@ -411,6 +449,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(bButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 40, -1));
 
         cButton.setText("C");
+        cButton.setToolTipText("Select letter \"C\"");
         cButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cButtonActionPerformed(evt);
@@ -419,6 +458,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(cButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 40, -1));
 
         dButton.setText("D");
+        dButton.setToolTipText("Select letter \"D\"");
         dButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dButtonActionPerformed(evt);
@@ -427,6 +467,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(dButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 40, -1));
 
         eButton.setText("E");
+        eButton.setToolTipText("Select letter \"E\"");
         eButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eButtonActionPerformed(evt);
@@ -435,6 +476,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(eButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 40, -1));
 
         fButton.setText("F");
+        fButton.setToolTipText("Select letter \"F\"");
         fButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fButtonActionPerformed(evt);
@@ -443,6 +485,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(fButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 40, -1));
 
         gButton.setText("G");
+        gButton.setToolTipText("Select letter \"G\"");
         gButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gButtonActionPerformed(evt);
@@ -451,6 +494,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(gButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 40, -1));
 
         hButton.setText("H");
+        hButton.setToolTipText("Select letter \"H\"");
         hButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hButtonActionPerformed(evt);
@@ -459,6 +503,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(hButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 40, -1));
 
         iButton.setText("I");
+        iButton.setToolTipText("Select letter \"I\"");
         iButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 iButtonActionPerformed(evt);
@@ -467,6 +512,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(iButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 40, -1));
 
         jButton.setText("J");
+        jButton.setToolTipText("Select letter \"J\"");
         jButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonActionPerformed(evt);
@@ -475,6 +521,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(jButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, 40, -1));
 
         kButton.setText("K");
+        kButton.setToolTipText("Select letter \"K\"");
         kButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kButtonActionPerformed(evt);
@@ -483,6 +530,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(kButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 40, -1));
 
         lButton.setText("L");
+        lButton.setToolTipText("Select letter \"L\"");
         lButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lButtonActionPerformed(evt);
@@ -491,6 +539,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(lButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 41, -1));
 
         mButton.setText("M");
+        mButton.setToolTipText("Select letter \"M\"");
         mButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mButtonActionPerformed(evt);
@@ -499,6 +548,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(mButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 41, -1));
 
         nButton.setText("N");
+        nButton.setToolTipText("Select letter \"N\"");
         nButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nButtonActionPerformed(evt);
@@ -507,6 +557,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(nButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 40, -1));
 
         oButton.setText("O");
+        oButton.setToolTipText("Select letter \"O\"");
         oButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 oButtonActionPerformed(evt);
@@ -515,6 +566,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(oButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 42, -1));
 
         pButton.setText("P");
+        pButton.setToolTipText("Select letter \"P\"");
         pButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pButtonActionPerformed(evt);
@@ -523,6 +575,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(pButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 40, -1));
 
         qButton.setText("Q");
+        qButton.setToolTipText("Select letter \"Q\"");
         qButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 qButtonActionPerformed(evt);
@@ -531,6 +584,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(qButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 40, -1));
 
         rButton.setText("R");
+        rButton.setToolTipText("Select letter \"R\"");
         rButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rButtonActionPerformed(evt);
@@ -539,6 +593,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(rButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 40, -1));
 
         sButton.setText("S");
+        sButton.setToolTipText("Select letter \"S\"");
         sButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sButtonActionPerformed(evt);
@@ -547,6 +602,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(sButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 40, -1));
 
         tButton.setText("T");
+        tButton.setToolTipText("Select letter \"T\"");
         tButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tButtonActionPerformed(evt);
@@ -555,6 +611,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(tButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 40, -1));
 
         uButton.setText("U");
+        uButton.setToolTipText("Select letter \"U\"");
         uButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 uButtonActionPerformed(evt);
@@ -563,6 +620,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(uButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 40, -1));
 
         vButton.setText("V");
+        vButton.setToolTipText("Select letter \"V\"");
         vButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vButtonActionPerformed(evt);
@@ -571,6 +629,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(vButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 40, -1));
 
         wButton.setText("W");
+        wButton.setToolTipText("Select letter \"W\"");
         wButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 wButtonActionPerformed(evt);
@@ -579,6 +638,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(wButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 340, 40, -1));
 
         xButton.setText("X");
+        xButton.setToolTipText("Select letter \"X\"");
         xButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 xButtonActionPerformed(evt);
@@ -587,6 +647,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(xButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 40, -1));
 
         yButton.setText("Y");
+        yButton.setToolTipText("Select letter \"Y\"");
         yButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 yButtonActionPerformed(evt);
@@ -595,6 +656,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(yButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, 41, -1));
 
         zButton.setText("Z");
+        zButton.setToolTipText("Select letter \"Z\"");
         zButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 zButtonActionPerformed(evt);
@@ -613,6 +675,7 @@ public class Hangman extends javax.swing.JFrame {
         game.add(word, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, -1, -1));
 
         skipButton.setText("Skip");
+        skipButton.setToolTipText("Skips level, +0 points");
         skipButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 skipButtonActionPerformed(evt);
