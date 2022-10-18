@@ -35,26 +35,26 @@ public class Scores extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         displayScores();
-        //firstScore.setText("ABC " + Endgame.score);
     }
 
     private void displayScores() throws FileNotFoundException {
-        String name1 = "ABC";
         String name2= "ABC";
         String name3= "ABC";
         String name4= "ABC";
         String name5= "ABC";
-        int score1 = 0;
+        String first = ""; 
+        
+        int highscore = 0; 
         int score2 = 0;
         int score3 = 0;
         int score4 = 0;
         int score5 = 0;
                 
-        File inputFile = new File("Highscores.txt");
+        File inputFile = new File("HighScores.txt");
        Scanner openedFile = new Scanner(inputFile);
        try {
-       name1 = openedFile.next();
-       score1 = openedFile.nextInt();
+       first = openedFile.next();
+       highscore = openedFile.nextInt();
        name2 = openedFile.next();
        score2 = openedFile.nextInt();
        name3 = openedFile.next();
@@ -67,7 +67,7 @@ public class Scores extends javax.swing.JFrame {
        catch (Exception e) {
            
        }
-       firstScore.setText(name1 + " " + score1);
+       firstScore.setText(first + " " + highscore);
        secondScore.setText(name2 + " " + score2);
        thirdScore.setText(name3 + " " + score3);
        fourthScore.setText(name4 + " " + score4);

@@ -1,11 +1,17 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/G    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+UIForms/JFrame.java to edit this template
  */
 package com.mycompany.hangmanprojectv1;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.io.IOException;
 import static java.lang.Thread.sleep;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -1387,6 +1393,13 @@ int[][] userBoard = {{8,0,0,4,0,6,0,0,7},{0,0,0,0,0,0,4,0,0},{0,1,0,0,0,0,6,5,0}
         getContentPane().add(game, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 420, 360));
 
         quit.setText("Quit");
+        quit.setToolTipText("Quits game");
+
+        quit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt)   {
+                quitActionPerformed(evt);
+            }
+        });
         getContentPane().add(quit, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
 
         submit.setText("Submit");
@@ -2220,8 +2233,29 @@ int[][] userBoard = {{8,0,0,4,0,6,0,0,7},{0,0,0,0,0,0,4,0,0},{0,1,0,0,0,0,6,5,0}
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         CheckBoard(userBoard);
+        
+        this.dispose(); 
+        Endgame obj = null;
+    try {
+        obj = new Endgame();
+    } catch (IOException ex) {
+        Logger.getLogger(Sudoku2.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        obj.setVisible(true); 
     }//GEN-LAST:event_submitActionPerformed
 
+    private void quitActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        this.dispose();
+        Endgame obj = null; 
+        try {
+        obj = new Endgame();
+    } catch (IOException ex) {
+        Logger.getLogger(Sudoku2.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        obj.setVisible(true); 
+    }
+    
     private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
         int number = 0; 
         
@@ -3007,8 +3041,14 @@ int[][] userBoard = {{8,0,0,4,0,6,0,0,7},{0,0,0,0,0,0,4,0,0},{0,1,0,0,0,0,6,5,0}
          }
     }//GEN-LAST:event_jTextField79ActionPerformed
 
+
     /**
      * @param args the command line arguments
+     *         private void BackActionPerformed(java.awt.event.ActionEvent evt) {                                     
+         this.dispose();
+        Mainscreen obj = new Mainscreen();
+        obj.setVisible(true);
+    }  
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

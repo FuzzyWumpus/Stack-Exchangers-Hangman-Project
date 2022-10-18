@@ -1,5 +1,0 @@
-ABC 0
-ABC 5
-BCA 4
-BAC 0
-BAD 0

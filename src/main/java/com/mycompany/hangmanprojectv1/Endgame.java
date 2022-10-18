@@ -44,24 +44,68 @@ public class Endgame extends javax.swing.JFrame {
         
            
         initComponents();
-    
+            ArrayList<HighScores> sortedScores = new ArrayList<>();
+        PrintWriter clear = new PrintWriter(new FileWriter("HighScores.txt"));
+        int maxLength = 3;
         int total = score + score1;
        yourScore.setText("Score: " + total);
-        
+        JTextField newHighScore = new JTextField(maxLength);
         setLocationRelativeTo(null);
-
-        //ArrayList<HighScores> sortedScores = new ArrayList<>();
-        //PrintWriter clear = new PrintWriter(new FileWriter("HighScores.txt"));
+        
+        PlainDocument doc = new PlainDocument();
+doc.setDocumentFilter(new DocumentFilter() {
+    @Override
+    public void insertString(DocumentFilter.FilterBypass omit,
+                             int offset,
+                             String name,
+                             AttributeSet newAttribute)
+    throws BadLocationException {
+        int newLength =
+            omit.getDocument().getLength() + name.length();
+        if (newLength <= maxLength) {
+            super.insertString(omit, offset, name, newAttribute);
+        }
     }
+
+    @Override
+    public void replace(DocumentFilter.FilterBypass omit,
+                        int offset,
+                        int length,
+                        String name,
+                        AttributeSet newAttribute)
+    throws BadLocationException {
+        int newLength =
+            omit.getDocument().getLength() - length + name.length();
+        if (newLength <= maxLength) {
+            super.replace(omit, offset, length, name, newAttribute);
+        }
+    }
+});
+newHighScore.setDocument(doc);
+        
+        
+                JFrame frame = new JFrame();
+        
+         int result = JOptionPane.showOptionDialog(frame, new Object[] {
+        "Enter Initials",
+        newHighScore
+    },
+    "New High Score!",
+    JOptionPane.OK_CANCEL_OPTION,
+    JOptionPane.QUESTION_MESSAGE,
+    null, null, null);
+
+         
+         int userScore = total; //total points from hangman instead of 100
+        String username = (result == JOptionPane.OK_OPTION ? newHighScore.getText() : null);
+        
+         
      
 
      
-    /*  
-       
-            Scanner fileScanner = new Scanner(saveScore(username, userScore)); 
+     Scanner fileScanner = new Scanner(saveScore(username, userScore)); 
         
             while(fileScanner.hasNext()){
-                userScore += 100; 
                 if(fileScanner.hasNextLine())
                 {
                     sortedScores.add(new HighScores(fileScanner.next(), fileScanner.nextInt())); 
@@ -77,30 +121,24 @@ public class Endgame extends javax.swing.JFrame {
             {
                 finalScores(sortedScores.get(i)); 
             }
-           
-           // displayScores();
- 
-           
-    /*
-    }
-    
-           private void displayScores() throws FileNotFoundException {
-        String name1 = "ABC";
-        String name2= "ABC";
+            
+            String name2= "ABC";
         String name3= "ABC";
         String name4= "ABC";
         String name5= "ABC";
-        int score1 = 0;
+        String first = ""; 
+        
+        int highscore = 0; 
         int score2 = 0;
         int score3 = 0;
         int score4 = 0;
         int score5 = 0;
                 
-        File inputFile = new File("Highscores.txt");
+        File inputFile = new File("HighScores.txt");
        Scanner openedFile = new Scanner(inputFile);
        try {
-       name1 = openedFile.next();
-       score1 = openedFile.nextInt();
+       first = openedFile.next();
+       highscore = openedFile.nextInt();
        name2 = openedFile.next();
        score2 = openedFile.nextInt();
        name3 = openedFile.next();
@@ -109,45 +147,21 @@ public class Endgame extends javax.swing.JFrame {
        score4 = openedFile.nextInt();
        name5 = openedFile.next();
        score5 = openedFile.nextInt();
-       
        }
        catch (Exception e) {
            
        }
-       
-       
-       firstScore4.setText(name1 + " " + score1);
+       firstScore4.setText(first + " " + highscore);
        firstScore.setText(name2 + " " + score2);
        firstScore1.setText(name3 + " " + score3);
        firstScore2.setText(name4 + " " + score4);
        firstScore3.setText(name5 + " " + score5);
        
-       
-       
-       
-       
-       
+     
+         
     }
-           
-     public static File finalScores(HighScores Score)throws FileNotFoundException, IOException
-    {
-           PrintWriter orderedScores = new PrintWriter(new FileWriter("Highscores.txt", true)); 
-        orderedScores.println(Score);
-        orderedScores.close(); 
-        File readable = new File("Highscores.txt"); 
-        return readable; 
-    }
-    
-    public static File saveScore(String name, int score ) throws FileNotFoundException, IOException{
-        PrintWriter highScores = new PrintWriter(new FileWriter("scores.txt", true)); 
-        highScores.println(name + " " + score);
-        highScores.close(); 
-        
-        File readable = new File("scores.txt"); 
-        return readable; 
-    }  
+     
 
-*/
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -367,7 +381,7 @@ newHighScore.setDocument(doc);
             }
             
                   Endgame test = new Endgame(); 
-      test.firstScore4.setText(username + " " + userScore);
+      test.firstScore3.setText(username + " " + userScore);
             
             java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
