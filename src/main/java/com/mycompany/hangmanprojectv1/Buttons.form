@@ -27,7 +27,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -35,7 +35,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" pref="398" max="32767" attributes="0"/>
+              <Component id="jPanel1" pref="418" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -110,6 +110,7 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="jButton0">
               <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Select Color"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
                 </Property>
@@ -122,6 +123,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton1">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Select Color"/>
+              </Properties>
               <Events>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseEntered"/>
                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseExited"/>
@@ -129,6 +133,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton2">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Select Color"/>
+              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton2MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton2MouseEntered"/>
@@ -136,6 +143,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton3">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Select Color"/>
+              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton3MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton3MouseEntered"/>
@@ -143,6 +153,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton4">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Select Color"/>
+              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton4MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton4MouseEntered"/>
@@ -150,6 +163,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton5">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Select Color"/>
+              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton5MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton5MouseEntered"/>
@@ -158,6 +174,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton6">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Select Color"/>
+              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton6MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton6MouseEntered"/>
@@ -166,6 +185,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton7">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Select Color"/>
+              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton7MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton7MouseEntered"/>
@@ -173,6 +195,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton8">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Select Color"/>
+              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton8MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton8MouseEntered"/>
@@ -180,6 +205,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton9">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Select Color"/>
+              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton9MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton9MouseEntered"/>
@@ -187,6 +215,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton10">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Select Color"/>
+              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton10MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton10MouseEntered"/>
@@ -195,6 +226,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton11">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Select Color"/>
+              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton11MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton11MouseEntered"/>
@@ -202,6 +236,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton12">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Select Color"/>
+              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton12MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton12MouseEntered"/>
@@ -209,6 +246,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton13">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Select Color"/>
+              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton13MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton13MouseEntered"/>
@@ -216,6 +256,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton14">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Select Color"/>
+              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton14MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton14MouseEntered"/>
@@ -223,6 +266,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton15">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Select Color"/>
+              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton15MouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton15MouseEntered"/>

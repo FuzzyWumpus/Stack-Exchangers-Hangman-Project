@@ -5,6 +5,9 @@
 package com.mycompany.hangmanprojectv1;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
@@ -38,6 +41,33 @@ public class Buttons extends javax.swing.JFrame {
         initComponents();
         clock();
         runGame();
+         getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+            KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "Cancel"); //$NON-NLS-1$
+        getRootPane().getActionMap().put("Cancel", new AbstractAction(){ //$NON-NLS-1$
+            public void actionPerformed(ActionEvent e)
+            {
+                System.exit(0);
+            }
+        });
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+            KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), "Pop"); //$NON-NLS-1$
+        getRootPane().getActionMap().put("Pop", new AbstractAction(){ //$NON-NLS-1$
+            public void actionPerformed(ActionEvent z)
+            {
+                popUp obj2 = new popUp();
+                obj2.setVisible(true);
+                
+            }
+        });
+        
+        // on close window the close method is called
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) 
+            {
+                System.exit(0);
+            }
+        });
     }
    
     /**
@@ -81,6 +111,7 @@ public class Buttons extends javax.swing.JFrame {
 
         jPanel2.setLayout(new java.awt.GridLayout(4, 4, 5, 5));
 
+        jButton0.setToolTipText("Select Color");
         jButton0.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton0.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -100,6 +131,7 @@ public class Buttons extends javax.swing.JFrame {
         });
         jPanel2.add(jButton0);
 
+        jButton1.setToolTipText("Select Color");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton1MouseEntered(evt);
@@ -113,6 +145,7 @@ public class Buttons extends javax.swing.JFrame {
         });
         jPanel2.add(jButton1);
 
+        jButton2.setToolTipText("Select Color");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
@@ -126,6 +159,7 @@ public class Buttons extends javax.swing.JFrame {
         });
         jPanel2.add(jButton2);
 
+        jButton3.setToolTipText("Select Color");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
@@ -139,6 +173,7 @@ public class Buttons extends javax.swing.JFrame {
         });
         jPanel2.add(jButton3);
 
+        jButton4.setToolTipText("Select Color");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton4MouseClicked(evt);
@@ -152,6 +187,7 @@ public class Buttons extends javax.swing.JFrame {
         });
         jPanel2.add(jButton4);
 
+        jButton5.setToolTipText("Select Color");
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton5MouseClicked(evt);
@@ -170,6 +206,7 @@ public class Buttons extends javax.swing.JFrame {
         });
         jPanel2.add(jButton5);
 
+        jButton6.setToolTipText("Select Color");
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton6MouseClicked(evt);
@@ -188,6 +225,7 @@ public class Buttons extends javax.swing.JFrame {
         });
         jPanel2.add(jButton6);
 
+        jButton7.setToolTipText("Select Color");
         jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton7MouseClicked(evt);
@@ -201,6 +239,7 @@ public class Buttons extends javax.swing.JFrame {
         });
         jPanel2.add(jButton7);
 
+        jButton8.setToolTipText("Select Color");
         jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton8MouseClicked(evt);
@@ -214,6 +253,7 @@ public class Buttons extends javax.swing.JFrame {
         });
         jPanel2.add(jButton8);
 
+        jButton9.setToolTipText("Select Color");
         jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton9MouseClicked(evt);
@@ -227,6 +267,7 @@ public class Buttons extends javax.swing.JFrame {
         });
         jPanel2.add(jButton9);
 
+        jButton10.setToolTipText("Select Color");
         jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton10MouseClicked(evt);
@@ -245,6 +286,7 @@ public class Buttons extends javax.swing.JFrame {
         });
         jPanel2.add(jButton10);
 
+        jButton11.setToolTipText("Select Color");
         jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton11MouseClicked(evt);
@@ -258,6 +300,7 @@ public class Buttons extends javax.swing.JFrame {
         });
         jPanel2.add(jButton11);
 
+        jButton12.setToolTipText("Select Color");
         jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton12MouseClicked(evt);
@@ -271,6 +314,7 @@ public class Buttons extends javax.swing.JFrame {
         });
         jPanel2.add(jButton12);
 
+        jButton13.setToolTipText("Select Color");
         jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton13MouseClicked(evt);
@@ -284,6 +328,7 @@ public class Buttons extends javax.swing.JFrame {
         });
         jPanel2.add(jButton13);
 
+        jButton14.setToolTipText("Select Color");
         jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton14MouseClicked(evt);
@@ -297,6 +342,7 @@ public class Buttons extends javax.swing.JFrame {
         });
         jPanel2.add(jButton14);
 
+        jButton15.setToolTipText("Select Color");
         jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton15MouseClicked(evt);
@@ -346,13 +392,13 @@ public class Buttons extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -558,6 +604,7 @@ public class Buttons extends javax.swing.JFrame {
       }
 
       public void sudoku(){
+          Endgame.score1 = score;
           this.dispose();
           Sudoku2 obj = new Sudoku2();
           obj.setVisible(true);
@@ -669,7 +716,7 @@ public class Buttons extends javax.swing.JFrame {
     private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
         // TODO add your handling code here:
         if(buttonClicked == 2){
-            score+=1000;
+            score+=100;
             game3();
         }
     }//GEN-LAST:event_jButton10MouseClicked
