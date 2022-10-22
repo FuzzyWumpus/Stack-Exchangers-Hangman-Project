@@ -12,33 +12,13 @@ import java.awt.event.*;
  *
  * @author Nathan Elias
  */
-public class PongGameFrame extends JPanel {
-    
-    PongGameFrame(){
-        
-    }
+public class PongGameFrame {
+  
     
     
-    @Override
-    public void paint(Graphics g)
-    {
-        super.paint(g);
-    }
-    
+
     public static void main(String[] args) {
-        
-        JFrame newFrame = new JFrame("My cool pong game");
-        newFrame.setSize(600,400);
-        newFrame.setLocationRelativeTo(null);
-        newFrame.setVisible(true);
-        newFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        PongGameFrame game = new PongGameFrame();
-        
-        while(true) {
-            game.repaint();
-        
-        }
+       GameFrame frame = new GameFrame();
         
     }
     
