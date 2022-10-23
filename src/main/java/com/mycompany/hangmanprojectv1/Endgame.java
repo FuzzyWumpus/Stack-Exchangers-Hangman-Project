@@ -4,6 +4,9 @@
  */
 package com.mycompany.hangmanprojectv1;
 
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -44,13 +47,20 @@ public class Endgame extends javax.swing.JFrame {
     static int score;
     static int score1;
     static int score2;
+    Font Galaxus; 
     /**
      * Creates new form Endgame
      * @throws java.io.IOException
      */
     public Endgame() throws IOException {
-        
-           
+        try{
+           Galaxus = Font.createFont(Font.TRUETYPE_FONT, new File("Galaxus-z8Mow.ttf")).deriveFont(45f); 
+           GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment(); 
+           ge.registerFont(Galaxus); 
+        }
+           catch(IOException | FontFormatException e){
+           }
+               
         initComponents();
             ArrayList<HighScores> sortedScores = new ArrayList<>();
         PrintWriter clear = new PrintWriter(new FileWriter("HighScores.txt"));
@@ -100,7 +110,7 @@ newHighScore.setDocument(doc);
         "Enter Initials",
         newHighScore
     },
-    "New High Score!",
+    "Name Enterer",
     JOptionPane.OK_CANCEL_OPTION,
     JOptionPane.QUESTION_MESSAGE,
     null, null, null);
@@ -161,33 +171,48 @@ newHighScore.setDocument(doc);
        catch (Exception e) {
            
        }
-       firstScore4.setText(first + " " + highscore);
-       firstScore.setText(name2 + " " + score2);
-       firstScore1.setText(name3 + " " + score3);
-       firstScore2.setText(name4 + " " + score4);
-       firstScore3.setText(name5 + " " + score5);
+       firstScore4.setText(first);
+       jLabel3.setText("" + highscore);
+       firstScore.setText(name2);
+       jLabel4.setText("" + score2);
+       firstScore1.setText(name3);
+       jLabel5.setText("" + score3);
+       firstScore2.setText(name4);
+       jLabel6.setText("" + score4);
+       firstScore3.setText(name5);
+       jLabel2.setText("" + score5);
        
-     
          
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         End = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         firstScore = new javax.swing.JLabel();
         firstScore1 = new javax.swing.JLabel();
         firstScore2 = new javax.swing.JLabel();
         firstScore3 = new javax.swing.JLabel();
         firstScore4 = new javax.swing.JLabel();
         yourScore = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("Highscores");
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(600, 405));
 
+        End.setBackground(new java.awt.Color(0, 0, 0));
+        End.setForeground(new java.awt.Color(192, 225, 12));
         End.setText("End");
         End.setToolTipText("Ends the game");
         End.addActionListener(new java.awt.event.ActionListener() {
@@ -196,71 +221,131 @@ newHighScore.setDocument(doc);
             }
         });
 
-        firstScore.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        firstScore.setText("ABC...00000");
+        jLabel1.setFont(Galaxus);
+        jLabel1.setForeground(new java.awt.Color(214, 214, 1));
+        jLabel1.setText("TOP 5 SCORES");
 
-        firstScore1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        firstScore1.setText("ABC...00000");
+        firstScore.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        firstScore.setForeground(new java.awt.Color(250, 41, 41));
+        firstScore.setText("ABC");
 
-        firstScore2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        firstScore2.setText("ABC...00000");
+        firstScore1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        firstScore1.setForeground(new java.awt.Color(16, 212, 206));
+        firstScore1.setText("ABC");
 
-        firstScore3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        firstScore3.setText("ABC...00000");
+        firstScore2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        firstScore2.setForeground(new java.awt.Color(174, 39, 212));
+        firstScore2.setText("ABC");
 
-        firstScore4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        firstScore4.setText("ABC...00000");
+        firstScore3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        firstScore3.setForeground(new java.awt.Color(48, 3, 243));
+        firstScore3.setText("ABC");
 
-        yourScore.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        firstScore4.setFont(new java.awt.Font("Segoe UI Emoji", 3, 36)); // NOI18N
+        firstScore4.setForeground(new java.awt.Color(0, 211, 35));
+        firstScore4.setText("ABC");
+
+        yourScore.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        yourScore.setForeground(new java.awt.Color(137, 149, 14));
         yourScore.setText("Score: ");
         yourScore.setToolTipText("");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(48, 3, 243));
+        jLabel2.setText("00000");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Emoji", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 211, 35));
+        jLabel3.setText("00000");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Emoji", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(250, 41, 41));
+        jLabel4.setText("00000");
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 1, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(16, 212, 206));
+        jLabel5.setText("00000");
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Emoji", 1, 36)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(174, 39, 212));
+        jLabel6.setText("00000");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(End)
+                        .addGap(90, 90, 90)
+                        .addComponent(yourScore, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(158, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(firstScore3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                                    .addComponent(firstScore2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(firstScore1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(firstScore, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(firstScore4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(71, 71, 71)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(114, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(firstScore4)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(firstScore)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(firstScore1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(firstScore2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(firstScore3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(yourScore, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(End))
+                .addGap(14, 14, 14))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(End)
-                        .addGap(155, 155, 155)
-                        .addComponent(yourScore, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(36, 201, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(firstScore4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(firstScore, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(firstScore2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(firstScore1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(firstScore3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(184, 184, 184))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(188, 188, 188)
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(firstScore4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(firstScore, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(firstScore1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(firstScore2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(firstScore3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(End, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(yourScore, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -429,6 +514,12 @@ newHighScore.setDocument(doc);
     private javax.swing.JLabel firstScore3;
     private javax.swing.JLabel firstScore4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel yourScore;
     // End of variables declaration//GEN-END:variables
 }
