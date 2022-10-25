@@ -422,7 +422,7 @@ public class Buttons extends javax.swing.JFrame {
                     int second=cal.get(Calendar.SECOND);
                     int minute =cal.get(Calendar.MINUTE);
                     int hour = cal.get(Calendar.HOUR);
-                    clock.setText("Date: " + month + "/" + day + "/"+year+" Time "+hour+":"+minute+";"+second+" ");
+                    clock.setText("Date: " + month + "/" + day + "/"+year+" Time "+hour+":"+minute+":"+second+" ");
                     
                     sleep(1000);
                     }

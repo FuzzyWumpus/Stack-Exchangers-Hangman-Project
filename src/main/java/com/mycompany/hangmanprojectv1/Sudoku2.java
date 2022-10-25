@@ -110,8 +110,12 @@ int[][] userBoard = {{8,0,0,4,0,6,0,0,7},{0,0,0,0,0,0,4,0,0},{0,1,0,0,0,0,6,5,0}
        
       System.out.println("Score: " + score);
       firstSubmit = false;
+      if (isCorrect) 
        return isCorrect;
-        
+        else
+          JOptionPane.showMessageDialog(this, "You made a mistake somewhere or multiple... try again",
+               "We'll get em next time", JOptionPane.ERROR_MESSAGE);
+              return isCorrect; 
         
         
     }
@@ -286,42 +290,49 @@ int[][] userBoard = {{8,0,0,4,0,6,0,0,7},{0,0,0,0,0,0,4,0,0},{0,1,0,0,0,0,6,5,0}
         jLayeredPane1.setForeground(new java.awt.Color(204, 204, 204));
 
         jTextField1.setText("8");
+        jTextField1.setToolTipText("Enter number 1-9");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
+        jTextField4.setToolTipText("Enter number 1-9");
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
             }
         });
 
+        jTextField7.setToolTipText("Enter number 1-9");
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7ActionPerformed(evt);
             }
         });
 
+        jTextField2.setToolTipText("Enter number 1-9");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
 
+        jTextField5.setToolTipText("Enter number 1-9");
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
             }
         });
 
+        jTextField8.setToolTipText("Enter number 1-9");
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField8ActionPerformed(evt);
             }
         });
 
+        jTextField9.setToolTipText("Enter number 1-9");
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField9ActionPerformed(evt);
@@ -329,12 +340,14 @@ int[][] userBoard = {{8,0,0,4,0,6,0,0,7},{0,0,0,0,0,0,4,0,0},{0,1,0,0,0,0,6,5,0}
         });
 
         jTextField6.setText("1");
+        jTextField6.setToolTipText("Enter number 1-9");
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
             }
         });
 
+        jTextField3.setToolTipText("Enter number 1-9");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);

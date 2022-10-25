@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.hangmanprojectv1.Pong;
+package com.mycompany.hangmanprojectv1;
 
 import java.awt.*;
 import java.util.*;
@@ -37,7 +37,7 @@ public class Paddle extends Rectangle {
 		case 1:
 
 			if(e.getKeyCode()==KeyEvent.VK_W) {
-
+                                
 				setYDirection(-speed);
 
 			}
@@ -77,7 +77,7 @@ public class Paddle extends Rectangle {
 		case 1:
 
 			if(e.getKeyCode()==KeyEvent.VK_W) {
-
+                               
 				setYDirection(0);
 
 			}
